@@ -1,0 +1,80 @@
+.mainLayout {
+    height: 100%;
+    width: 100%; 
+    background-image: url('../../images/loginImageBackgroung.png');
+}
+
+.card {
+    position: relative;
+    width: 70%; 
+    height: 70%;
+    top : 15%;
+    left: 15%;
+  }
+  .regImage
+  {
+    position: relative;
+    width : 30%;
+    height: 100%;
+    top : 5%;
+  }
+
+  .regisForm
+  {
+    position: relative;
+    left: 48%;
+    width: 50%; 
+    height: 100%;
+    top : -100%;
+  }
+
+.pageTitle
+  {
+     color: navy;
+     font-size: large;
+  }
+
+.field
+  {
+     width: 45%;
+     height: 16%;
+     position: relative;
+     font-size: large;
+     align-self: center;
+     display: inline-block;
+     padding-bottom: 6px;
+     padding-right: 10px;
+  }
+  .fieldEm
+  {
+     width: 93%;
+     height: 16%;
+     position: relative;
+     font-size: large;
+     align-self: center;
+     display: inline-block;
+     padding-bottom: 6px;
+  }
+  .fieldPa
+  {
+     width: 93%;
+     height: 16%;
+     position: relative;
+     font-size: large;
+     align-self: center;
+     display: inline-block;
+     padding-bottom: 6px;
+  }
+  .button
+  {
+
+    width: 75%;
+   
+  }
+
+  .buttonDisp
+  {
+    display: inline-block;
+  }
+
+
