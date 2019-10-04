@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-accordion>
+    <mat-expansion-panel class="notes">
+      <mat-expansion-panel-header>
+        <div style="width: 100%">
+          <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="25" [formControl]="description" placeholder="Title" class="fielda"></textarea>
+        </div>
+      </mat-expansion-panel-header>
+      <div>
+        <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="25" [formControl]="description" placeholder="Take a Note" class="field"></textarea>
+      </div>xzdbfdgd
+      <div>
+        <app-notes-icons></app-notes-icons>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
