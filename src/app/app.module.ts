@@ -13,6 +13,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { AppServiceService } from './app-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+    
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     PagenotfoundComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule
+
   ],
   providers: [AppServiceService],
   bootstrap: [AppComponent]
