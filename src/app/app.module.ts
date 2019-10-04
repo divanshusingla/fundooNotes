@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { NotesComponent } from './components/notes/notes.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NotesIconsComponent } from './components/notes-icons/notes-icons.component'; 
     
 
 @NgModule({
@@ -25,7 +28,9 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
     PagenotfoundComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotesComponent,
+    NotesIconsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule
 
   ],
   providers: [AppServiceService],
