@@ -10,7 +10,7 @@ import {AppMaterialModule} from './angularMaterial/angular.material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { AppServiceService } from './app-service.service';
+import { AppServiceService } from './services/app-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';

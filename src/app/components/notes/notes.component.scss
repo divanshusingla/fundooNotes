@@ -1,26 +1,56 @@
 
-.container{
- height: 100%;
- width: 100%;
-    
-.notes
+.container
 {
-    width:60%;
-    max-height: 100%;
-    margin-top: 3%;
-    margin-left: 25%;
-    border-radius: 8px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 2%;
+    
+.titlecard1
+{
+    width: 50%;
+   margin-left: 25%; 
+  
+    
+   .area1
+   {
+       width: 90%;
+       border: none;
+       outline: none;
+   }
+}
 
-    .fielda
-    {
-        width: 90%;
-        border : 0px;
-        }
-
-    .field
-    {
-        width: 100%;
-        border : 0px;
-    }
+.titlecard2
+{
+    width: 50%;
+   margin-left: 25%; 
+  
+    
+   .area2
+   {
+       width: 90%;
+       border: none;
+       outline: none;
+   }
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

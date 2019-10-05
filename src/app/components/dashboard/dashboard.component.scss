@@ -24,10 +24,20 @@
   }
   .searchbar
   {
-    width : 50%;
-    padding-top: 2.5%;
-    padding-right: 1%;
-    transform: scaleY(0.60); 
+    width : 40%;
+    transform: scaleY(0.65); 
+    border-radius: 10px;
+    font-size: 20px;
+    height: 40%;
+    
+    .searchtype
+    {
+      width : 95%;
+      height: 100%;
+      outline: none;
+      border : none;
+      font-size: 18px;
+    }
     }
 .toolbarButton
 {
@@ -51,7 +61,7 @@
    a:hover
     {
         background-color :$lightGrey;
-        color:$black;
+        color : $black;
         border-radius:0px 40px 40px 0px;
     }
     .sidebaricons
