@@ -6,6 +6,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {AuthGuardGuard} from './authGuard/auth-guard.guard'
 
 const routes: Route[] = [
   {path : '', redirectTo : '/login' , pathMatch : 'full'},
@@ -13,7 +14,7 @@ const routes: Route[] = [
   {path : 'registration', component : RegisterComponent },
   {path : 'resetpassword/:token', component : ResetPasswordComponent},
   {path : 'forgot', component : ForgotPasswordComponent },
-  {path : 'dashboard', component : DashboardComponent },
+  {path : 'dashboard', component : DashboardComponent, canActivate: [AuthGuardGuard] },
   {path : '**', component : PagenotfoundComponent }
 
 ];

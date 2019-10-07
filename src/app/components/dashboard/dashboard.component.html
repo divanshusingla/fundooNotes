@@ -8,18 +8,19 @@
 
     <mat-card class="searchbar" fxHide.xs="true" fxShow="true">
         <mat-icon matPrefix>search</mat-icon>
-        <textarea matInput type="text"  placeholder="Search" class="searchtype" ></textarea>
+        <textarea matInput type="text" cdkTextareaAutosize placeholder="Search" class="searchtype" ></textarea>
     </mat-card>
 
-    <!-- <mat-form-field class="searchbar" appearance="outline" fxHide.xs="true" fxShow="true">
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="Search">
-    </mat-form-field> -->
     <button mat-button class="toolbarButton">
       <mat-icon>apps</mat-icon>
     </button>
-    <button mat-button class="toolbarButton">
-        <mat-icon>apps</mat-icon>
+    <button mat-button [matMenuTriggerFor]="Userdetails" class="toolbarButton">
+        <mat-icon>face</mat-icon>
+        <mat-menu #Userdetails>
+          <div fxLayout="row">
+            <div><button mat-menu-item >Add account</button></div>
+          <div><button mat-menu-item (click)="logout()" routerLink="../login">Sign out</button></div>
+        </div></mat-menu>
       </button>
     
   </mat-toolbar>
