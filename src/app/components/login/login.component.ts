@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {AppServiceService} from '../../app-service.service';
+import {AppServiceService} from '../../services/app-service.service';
 import { Login } from '../../models/login.model';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -9,7 +9,8 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  reponse: any;
+  response: any;
+  result: any;
   userObj: Login = new Login();
 
   constructor(@Inject(AppServiceService)private svc: AppServiceService) { }
@@ -36,10 +37,10 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
       service: "basic"
     }
-    this.svc.login(this.userObj)
-      .subscribe((response) => {
-        response = response;
-        console.log(response);
+    this.result=this.svc.post(this.userObj,"login")
+      this.result.subscribe((response) => {
+        this.response = response;
+        console.log(this.response);
       })
   }
 

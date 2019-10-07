@@ -1,19 +1,21 @@
-<div class="container">
-  <mat-accordion>
-    <mat-expansion-panel class="notes">
-      <mat-expansion-panel-header>
-        <div style="width: 100%">
-          <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="25" placeholder="Title" class="fielda"></textarea>
-        </div>
-      </mat-expansion-panel-header>
-      <div>
-        <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="25" placeholder="Take a Note" class="field"></textarea>
+<div class="container" fxLayout="column">
+<div class="titlecard1" (click)="show = !show" *ngIf="show">
+  <mat-card>
+      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="25" placeholder="Take a note" class="area1"></textarea>
+  </mat-card>
+</div>
+
+<div class="titlecard2" *ngIf="!show">
+  <mat-card fxLayout="column" fxLayoutGap="10px">
+      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="25" placeholder="Title" class="area2"></textarea>
+    <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="25" placeholder="Take a Note" class="area2"></textarea>
+      <div style="display: flex" fxLayoutAlign="space-between center" >
+      <app-notes-icons></app-notes-icons>
+    <button mat-button (click)="show = !show">Close </button>
       </div>
-      <div>
-        <app-notes-icons></app-notes-icons>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+  </mat-card>
+</div>
 </div>

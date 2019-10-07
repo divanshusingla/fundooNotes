@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/register.model';
 import { FormControl, Validators } from '@angular/forms';
-import { AppServiceService } from '../../app-service.service';
+import { AppServiceService } from '../../services/app-service.service';
 import { Inject } from '@angular/core';
 
 @Component({
@@ -10,7 +10,8 @@ import { Inject } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  reponse: any;
+  response: any;
+  result: any;
   userObj: User = new User();
 
   constructor(@Inject(AppServiceService) private svc: AppServiceService) { }
@@ -64,11 +65,11 @@ export class RegisterComponent implements OnInit {
       password: this.password.value,
       service: "basic"
     }
-    this.svc.registration(this.userObj)
-      .subscribe((response) => {
-        response = response;
-        console.log(response);
-      })
+    this.result = this.svc.post(this.userObj,"userSignUp");
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+    })
   }
 
 }

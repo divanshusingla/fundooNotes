@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Forgot } from '../../models/forgot.model';
 import { FormControl, Validators } from '@angular/forms';
-import { AppServiceService } from '../../app-service.service';
+import { AppServiceService } from '../../services/app-service.service';
 import { Inject } from '@angular/core';
 
 @Component({
@@ -10,7 +10,8 @@ import { Inject } from '@angular/core';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-  reponse: any;
+  response: any;
+  result: any;
   userObj: Forgot = new Forgot();
 
   constructor(@Inject(AppServiceService) private svc: AppServiceService) { };
@@ -28,10 +29,10 @@ export class ForgotPasswordComponent implements OnInit {
       email: this.email.value,
       service: "basic"
     }
-    this.svc.forgot(this.userObj)
-      .subscribe((response) => {
-        response = response;
-        console.log(response);
+    this.result = this.svc.post(this.userObj,"reset");
+      this.result.subscribe((response) => {
+        this.response = response;
+        console.log(this.response);
       })
   }
 
