@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Forgot } from '../../models/forgot.model';
 import { FormControl, Validators } from '@angular/forms';
-import { AppServiceService } from '../../services/app-service.service';
+import {UserServiceService} from '../../services/userService/user-service.service'
 import { Inject } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
   result: any;
   userObj: Forgot = new Forgot();
 
-  constructor(@Inject(AppServiceService) private svc: AppServiceService) { };
+  constructor(@Inject(UserServiceService) private svc: UserServiceService) { };
   public email = new FormControl('', [Validators.required]);
 
   getEmailInvalidMessage() {
@@ -29,7 +29,13 @@ export class ForgotPasswordComponent implements OnInit {
       email: this.email.value,
       service: "basic"
     }
-    this.result = this.svc.post(this.userObj,"reset");
+
+    let obj={
+      data: this.userObj,
+      url: 'reset'
+    }
+
+    this.result = this.svc.PostwithoutToken(obj);
       this.result.subscribe((response) => {
         this.response = response;
         console.log(this.response);

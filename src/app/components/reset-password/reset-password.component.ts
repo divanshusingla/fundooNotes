@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppServiceService} from '../../services/app-service.service';
+import {AppServiceService} from '../../services/httpService/app-service.service';
 import { Reset } from '../../models/reset.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Inject } from '@angular/core';

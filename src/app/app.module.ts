@@ -10,14 +10,15 @@ import {AppMaterialModule} from './angularMaterial/angular.material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { AppServiceService } from './services/app-service.service';
+import { AppServiceService } from './services/httpService/app-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { NotesComponent } from './components/notes/notes.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NotesIconsComponent } from './components/notes-icons/notes-icons.component'; 
+import {AuthGuardGuard} from './authGuard/auth-guard.guard';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
     
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NotesIconsComponent } from './components/notes-icons/notes-icons.compon
     ForgotPasswordComponent,
     DashboardComponent,
     NotesComponent,
-    NotesIconsComponent
+    NotesIconsComponent,
+    DisplayNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,15 +43,10 @@ import { NotesIconsComponent } from './components/notes-icons/notes-icons.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
     MatExpansionModule
 
   ],
-  providers: [AppServiceService],
+  providers: [AppServiceService,AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
