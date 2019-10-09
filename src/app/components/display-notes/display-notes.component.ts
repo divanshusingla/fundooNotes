@@ -25,8 +25,6 @@ message : String;
     
 
   }
-
-
 getNoteData()
 {
 this.options =

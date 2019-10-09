@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/register.model';
 import { FormControl, Validators } from '@angular/forms';
-import { AppServiceService } from '../../app-service.service';
+import {UserServiceService} from '../../services/userService/user-service.service'
 import { Inject } from '@angular/core';
 
 @Component({
@@ -10,10 +10,11 @@ import { Inject } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  reponse: any;
+  response: any;
+  result: any;
   userObj: User = new User();
 
-  constructor(@Inject(AppServiceService) private svc: AppServiceService) { }
+  constructor(@Inject(UserServiceService) private svc: UserServiceService) { }
   public firstName = new FormControl('', [Validators.required]);
   public lastName = new FormControl('', [Validators.required]);
   public email = new FormControl('', [Validators.required, Validators.email]);
@@ -64,11 +65,17 @@ export class RegisterComponent implements OnInit {
       password: this.password.value,
       service: "basic"
     }
-    this.svc.registration(this.userObj)
-      .subscribe((response) => {
-        response = response;
-        console.log(response);
-      })
+
+    let obj={
+      data: this.userObj,
+      url: 'userSignUp'
+    }
+
+    this.result = this.svc.PostwithoutToken(obj);
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+    })
   }
 
 }

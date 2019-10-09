@@ -1,0 +1,21 @@
+<div class="container" fxLayout="column">
+<div class="titlecard1" (click)="toggle()" *ngIf="show">
+  <mat-card>
+      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="25" placeholder="Take a note" class="area1"></textarea>
+  </mat-card>
+</div>
+
+<div class="titlecard2" *ngIf="!show">
+  <mat-card fxLayout="column" fxLayoutGap="10px">
+      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="25" placeholder="Title" class="area2" [formControl]="title"></textarea>
+    <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="25" placeholder="Take a Note" class="area2" [formControl]="description"></textarea>
+      <div style="display: flex" fxLayoutAlign="space-between center" >
+      <app-notes-icons></app-notes-icons>
+    <button mat-button (click)="receiveData()" >Close</button>
+      </div>
+  </mat-card>
+</div>
+<!-- </div> -->

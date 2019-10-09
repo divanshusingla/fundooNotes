@@ -1,4 +1,3 @@
-
 import { Component, OnInit,Inject } from '@angular/core';
 import {UserServiceService} from '../../services/userService/user-service.service';
 import { Reset } from '../../models/reset.model';

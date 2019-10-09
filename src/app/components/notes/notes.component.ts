@@ -6,7 +6,8 @@ import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
   selector: 'app-notes',
-g  styleUrls: ['./notes.component.scss']
+  templateUrl: './notes.component.html',
+  styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
   show: boolean = true;
@@ -21,8 +22,8 @@ export class NotesComponent implements OnInit {
     this.show = !this.show;
    
   }
-
-  constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private datasvc : DataService) { }
+  
+  constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private datasvc : DataService ) { }
   ngOnInit() {
   }
   receiveData(){
@@ -35,7 +36,8 @@ export class NotesComponent implements OnInit {
     else{
       this.note = {
         title : this.title.value,
-        description : this.description.value
+        description : this.description.value,
+        service: "basic"
       }
       let obj={
         data: this.note,
@@ -45,9 +47,8 @@ export class NotesComponent implements OnInit {
       this.result=this.svc.postwithToken(obj)
       this.result.subscribe((response) => {
         this.response = response;
-        this.datasvc.changeMessage("Hello from Sibling")
         console.log(this.response);
-      
+        this.datasvc.changeMessage("Hello from Sibling")      
       });
       this.toggle();
     }

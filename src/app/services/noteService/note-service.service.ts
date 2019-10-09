@@ -7,8 +7,6 @@
   providedIn: 'root'
 })
 export class NoteServiceService {
-
-  
   constructor(@Inject(HttpClient) private http : HttpClient, @Inject(AppServiceService) private svc : AppServiceService ) { }
 
 
@@ -22,7 +20,6 @@ export class NoteServiceService {
     }
     return this.svc.postWithTokensapi(userObj,httpOptions);
   }
-
 
   getWithTokens(userObj)
   {
