@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
 import {Note} from '../../models/note.model';
 import {DataService} from 'src/app/services/dataService/data.service';
+import {MatDialog} from '@angular/material';
+import { DialogNoteComponent } from '../dialog-note/dialog-note.component';
 
 @Component({
   selector: 'app-display-notes',
@@ -13,8 +15,9 @@ notes : Note;
 options : any;
 message : String;
 
-  constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService) { }
+  constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
 
+ 
   ngOnInit() {
     this.getNoteData();
     this.dataSvc.currentMessage.subscribe((res:any)=>
@@ -37,6 +40,23 @@ this.options =
   },(error)=>{
     console.log(error);
   });
+}
+
+
+openDialog(note)
+{
+  let dialogref = this.dialog.open(DialogNoteComponent,
+    {
+      data : {
+        title : note.title ,
+        description : note.description
+      }
+    });
+  
+  dialogref.afterClosed().subscribe(result=> {
+    console.log("dialog result ", result);
+    
+  })
 }
 
 }

@@ -38,6 +38,7 @@ import { DialogNoteComponent } from './components/dialog-note/dialog-note.compon
     NoteMainComponent,
     DialogNoteComponent
   ],
+  entryComponents : [DialogNoteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

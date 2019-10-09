@@ -1,9 +1,9 @@
 <div fxLayoutGap="10px" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayout.sm="row wrap" class="container">
-  <mat-card fxFlex="25" class="dcard" *ngFor="let note of notes" fxFlex.xs="100" fxFlex.sm="30">
-    <div>
-        <p style=" word-break: break-all">{{note.title}}</p>
+  <mat-card fxFlex="25"  class="dcard" *ngFor="let note of notes" fxFlex.xs="100" fxFlex.sm="30">
+    <div  (click)="openDialog(note)">
+        <p style=" word-break: break-all" >{{note.title}}</p>
     </div>
-    <div>
+    <div (click)="openDialog(note)">
         <p style=" word-break: break-all">{{note.description}}</p>
     </div>
     <div>

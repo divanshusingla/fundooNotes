@@ -16,10 +16,10 @@
     </button>
     <button mat-button [matMenuTriggerFor]="Userdetails" class="toolbarButton">
         <mat-icon>face</mat-icon>
-        <mat-menu #Userdetails>
+        <mat-menu #Userdetails [overlapTrigger]="false">
           <div fxLayout="row">
             <div><button mat-menu-item >Add account</button></div>
-          <div><button mat-menu-item (click)="logout()" routerLink="../login">Sign out</button></div>
+          <div><button mat-menu-item (click)="logout()" routerLink="/login">Sign out</button></div>
         </div></mat-menu>
       </button>
     

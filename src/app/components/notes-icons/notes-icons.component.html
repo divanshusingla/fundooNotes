@@ -22,7 +22,8 @@
   <button mat-icon-button [matMenuTriggerFor]="menu" title="More">
     <mat-icon>more_vert</mat-icon>
   </button>
-  <mat-menu #menu="matMenu" yPosition="below">
+  <mat-menu #menu="matMenu" [overlapTrigger]="false"
+  >
     <button mat-menu-item>Add label</button>
     <button mat-menu-item>Add drawing</button>
     <button mat-menu-item>Show checkboxes</button>
