@@ -19,6 +19,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { NotesIconsComponent } from './components/notes-icons/notes-icons.component'; 
 import {AuthGuardGuard} from './authGuard/auth-guard.guard';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+import { NoteMainComponent } from './components/note-main/note-main.component';
+import { DialogNoteComponent } from './components/dialog-note/dialog-note.component';
     
 
 @NgModule({
@@ -32,7 +34,9 @@ import { DisplayNotesComponent } from './components/display-notes/display-notes.
     DashboardComponent,
     NotesComponent,
     NotesIconsComponent,
-    DisplayNotesComponent
+    DisplayNotesComponent,
+    NoteMainComponent,
+    DialogNoteComponent
   ],
   imports: [
     BrowserModule,

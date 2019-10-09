@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column">
-  <mat-toolbar class="toolbar">
+  <mat-toolbar class="toolbar" fxFlex="9">
     <button mat-button (click)="drawer.toggle()" class="toolbarButton">
       <mat-icon>menu</mat-icon>
     </button>
@@ -25,7 +25,7 @@
     
   </mat-toolbar>
 
-<div class="toolnote">
+<div class="toolnote" fxFlex="90">
   <mat-drawer-container class="maincontainer"  fxHide.xs="true" fxShow="true">
     <mat-drawer #drawer mode="side" class="sidebar" opened>
 <mat-nav-list>
@@ -41,9 +41,8 @@
     </mat-nav-list>
     </mat-drawer>
   </mat-drawer-container>
-  <div style="width: 100%">
-      <app-notes></app-notes>
-      <app-display-notes></app-display-notes>
+  <div fxFlex="80" fxFlex.xs="100" fxFlex.sm="100">
+  <router-outlet></router-outlet>
   </div>
   </div>
   </div>

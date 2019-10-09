@@ -13,7 +13,6 @@ notes : Note;
 options : any;
 message : String;
 
-
   constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService) { }
 
   ngOnInit() {
@@ -34,7 +33,7 @@ this.options =
   this.svc.getWithTokens(this.options).subscribe((response : any) =>
   {
     // console.log('response form the getnote data',response);
-    this.notes = response.data.data;
+    this.notes = response.data.data.reverse();
   },(error)=>{
     console.log(error);
   });
