@@ -1,6 +1,5 @@
 export class Reset 
 {
-    password : "String";
-    confirmPassword : "String";
+    newPassword : String;
     service : "basic"
 }

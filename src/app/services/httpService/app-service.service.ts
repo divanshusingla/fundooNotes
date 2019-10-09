@@ -21,6 +21,15 @@ export class AppServiceService {
     return this.http.post(this.baseUrl+userObj.url, this.getEncodedData(userObj.data),options);
   }
 
+//getting the notes data
+
+getWithTokensapi(userObj,options)
+{
+  return this.http.get(this.baseUrl1+userObj.url,options);
+}
+
+
+
 //adding note in the api 
 
 postWithTokensapi(userObj,options)
@@ -29,10 +38,6 @@ postWithTokensapi(userObj,options)
 
 }
 
-getWithTokensapi(userObj,options)
-{
-  return this.http.get(this.baseUrl1+userObj.url,options);
-}
   getEncodedData(data)
   {
     const formBody=[];
@@ -44,10 +49,4 @@ getWithTokensapi(userObj,options)
     }
     return formBody.join('&');
   }
-
-
-
-reset(userObj){
-  return this.http.post(' http://fundoonotes.incubation.bridgelabz.com/api/user/resetpassword', userObj);
-}
 }
