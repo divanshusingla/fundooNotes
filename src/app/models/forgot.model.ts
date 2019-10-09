@@ -1,5 +1,5 @@
 export class Forgot 
 {
-    email : "String";
-    service : "string"
+    email : String;
+    service : "basic"
 }

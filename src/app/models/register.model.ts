@@ -1,8 +1,8 @@
 export class User 
 {
-    firstName : "String";
-    lastName : "String";
-    email : "String";
-    password : "String";
+    firstName : String;
+    lastName : String;
+    email : String;
+    password : String;
     service : "basic"
 }
