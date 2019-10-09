@@ -1,3 +1,13 @@
-<p>
-  display-notes works!
-</p>
+<div class="container" fxLayout="row wrap" fxLayoutGap="15px">
+  <mat-card fxFlex="20" class="dcard" *ngFor="let note of notes">
+    <div   >
+        <p>{{note.title}}</p>
+    </div>
+    <div >
+        <p>{{note.description}}</p>
+    </div>
+    <div>
+      <app-notes-icons></app-notes-icons>
+    </div>
+  </mat-card>
+</div>

@@ -29,6 +29,10 @@ postWithTokensapi(userObj,options)
 
 }
 
+getWithTokensapi(userObj,options)
+{
+  return this.http.get(this.baseUrl1+userObj.url,options);
+}
   getEncodedData(data)
   {
     const formBody=[];

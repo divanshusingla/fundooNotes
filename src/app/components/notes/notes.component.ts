@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {Note} from '../../models/note.model';
 import {NoteServiceService} from './../../services/noteService/note-service.service';
+import { DataService } from 'src/app/services/dataService/data.service';
+
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -20,8 +22,8 @@ export class NotesComponent implements OnInit {
     this.show = !this.show;
    
   }
-
-  constructor(@Inject(NoteServiceService) private svc : NoteServiceService) { }
+  
+  constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private datasvc : DataService ) { }
   ngOnInit() {
   }
   receiveData(){
@@ -46,7 +48,7 @@ export class NotesComponent implements OnInit {
       this.result.subscribe((response) => {
         this.response = response;
         console.log(this.response);
-      
+        this.datasvc.changeMessage("Hello from Sibling")      
       });
       this.toggle();
     }
