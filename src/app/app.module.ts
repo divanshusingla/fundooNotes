@@ -10,9 +10,16 @@ import {AppMaterialModule} from './angularMaterial/angular.material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { AppServiceService } from './app-service.service';
+import { AppServiceService } from './services/httpService/app-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NotesComponent } from './components/notes/notes.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NotesIconsComponent } from './components/notes-icons/notes-icons.component'; 
+import {AuthGuardGuard} from './authGuard/auth-guard.guard';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+    
 
 @NgModule({
   declarations: [
@@ -21,7 +28,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     PagenotfoundComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashboardComponent,
+    NotesComponent,
+    NotesIconsComponent,
+    DisplayNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +42,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
+
   ],
-  providers: [AppServiceService],
+  providers: [AppServiceService,AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

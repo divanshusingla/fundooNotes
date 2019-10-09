@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {AppServiceService} from '../../app-service.service';
+import {UserServiceService} from '../../services/userService/user-service.service'
 import { Login } from '../../models/login.model';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {AuthServiceService} from '../../services/authService/auth-service.service'
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,11 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  reponse: any;
+  response: any;
+  result: any;
   userObj: Login = new Login();
 
-  constructor(@Inject(AppServiceService)private svc: AppServiceService) { }
+  constructor(@Inject(UserServiceService)private svc: UserServiceService,@Inject(Router)private router:Router,@Inject(AuthServiceService)private auth: AuthServiceService) { }
   public email = new FormControl('', [Validators.required, Validators.email]);
   public password = new FormControl('', [Validators.required]);
 
@@ -36,10 +39,23 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
       service: "basic"
     }
-    this.svc.login(this.userObj)
-      .subscribe((response) => {
-        response = response;
-        console.log(response);
+
+    let obj={
+      data: this.userObj,
+      url: 'login'
+    }
+
+    this.result=this.svc.PostwithoutToken(obj)
+      this.result.subscribe((response) => {
+        this.response = response;
+        console.log(this.response);
+        localStorage.setItem('id',response.id);
+        this.auth.sendToken(response.id);
+        this.router.navigate(['/dashboard']);
+      }, (error) =>
+      {
+        console.log(error);
+        
       })
   }
 

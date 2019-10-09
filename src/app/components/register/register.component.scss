@@ -1,9 +1,11 @@
+@import '../../appStyles/colors.scss' ;
+
 .mainLayout {
   height: 100%;
   display: flex;
     align-items: center;
     justify-content: center;
-  background-image: url('../../images/loginImageBackgroung.png');
+  background-image: url('../../../assets/images/backgroundImage.png');
 }
 
 .card {
@@ -23,7 +25,7 @@ height: 900%;
 
 .pageTitle
 {
-   color: navy;
+   color:$navy;
    font-size: 30px;
 }
 

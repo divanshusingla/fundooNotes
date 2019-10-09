@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  base : 'http://fundoonotes.incubation.bridgelabz.com/api/user/',
+  base1:"http://fundoonotes.incubation.bridgelabz.com/api/notes/"
 };
 
 /*
