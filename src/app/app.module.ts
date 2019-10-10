@@ -21,6 +21,8 @@ import {AuthGuardGuard} from './authGuard/auth-guard.guard';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import { NoteMainComponent } from './components/note-main/note-main.component';
 import { DialogNoteComponent } from './components/dialog-note/dialog-note.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
     
 
 @NgModule({
@@ -36,7 +38,9 @@ import { DialogNoteComponent } from './components/dialog-note/dialog-note.compon
     NotesIconsComponent,
     DisplayNotesComponent,
     NoteMainComponent,
-    DialogNoteComponent
+    DialogNoteComponent,
+    ArchiveComponent,
+    TrashComponent
   ],
   entryComponents : [DialogNoteComponent],
   imports: [

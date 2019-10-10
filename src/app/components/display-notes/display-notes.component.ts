@@ -24,9 +24,8 @@ message : String;
     {
       this.getNoteData();
     })
-    
-
   }
+
 getNoteData()
 {
 this.options =
@@ -37,25 +36,36 @@ this.options =
   {
     // console.log('response form the getnote data',response);
     this.notes = response.data.data.reverse();
+    this.notes = this.filterData(this.notes);
   },(error)=>{
     console.log(error);
   });
 }
 
 
+filterData(data)
+{
+  var result = data.filter(function(note)
+  {
+    return (note.isArchived == false && note.isDeleted == false );
+  })
+  return result;
+}
+
+
 openDialog(note)
 {
+  console.log("the value of note is ", note);
   let dialogref = this.dialog.open(DialogNoteComponent,
     {
       data : {
         title : note.title ,
-        description : note.description
+        description : note.description,
+        id : note.id
       }
     });
-  
   dialogref.afterClosed().subscribe(result=> {
     console.log("dialog result ", result);
-    
   })
 }
 

@@ -14,7 +14,7 @@ export class NoteServiceService {
   {
     let httpOptions={
       headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
+        'Content-type':'application/json',
         'Authorization':localStorage.getItem('id')
       })
     }
@@ -31,6 +31,5 @@ export class NoteServiceService {
     }
     return this.svc.getWithTokensapi(userObj,httpOptions);
   }
-
 
 }

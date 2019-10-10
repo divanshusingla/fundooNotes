@@ -1,11 +1,14 @@
-<div fxFlex.xs="80" fxFlex.sm="30">
-    <div>
-        <p style=" word-break: break-all">{{data.title}}</p>
-    <div>
-        <p style=" word-break: break-all"> {{data.description}}</p>
-    </div>
-    <div>
-      <app-notes-icons></app-notes-icons>
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+
+      <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="25"class="text"  placeholder="Title" [formControl]="title" value="{{data.title}}"></textarea>
+  
+        <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="25" class="text" placeholder="Take a Note" [formControl]="description" value="{{data.description}}"></textarea>
+   
+        <div class="footer" fxLayoutAlign="space-between center">
+        <app-notes-icons></app-notes-icons>
+      <button mat-button (click)=" updateNote()">Close</button>
     </div>
     </div>
 

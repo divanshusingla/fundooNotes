@@ -8,6 +8,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {AuthGuardGuard} from './authGuard/auth-guard.guard'
 import { NoteMainComponent } from './components/note-main/note-main.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 const routes: Route[] = [
   {path : '', redirectTo : '/login' , pathMatch : 'full'},
@@ -17,7 +19,9 @@ const routes: Route[] = [
   {path : 'forgot', component : ForgotPasswordComponent },
   {path : '', component : DashboardComponent, canActivate: [AuthGuardGuard],
 children : [
-  {path : 'note', component : NoteMainComponent}
+  {path : 'note', component : NoteMainComponent},
+  {path : 'archive', component : ArchiveComponent},
+  {path : 'trash', component : TrashComponent}
 ] },
   {path : '**', component : PagenotfoundComponent }
 

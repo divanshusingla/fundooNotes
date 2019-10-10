@@ -1,4 +1,4 @@
-<div class="container" fxLayoutAlign="space-around center" fxFlex="100">
+<div class="container" fxLayoutAlign="space-around center" fxFlex.xs="70" fxFlex.sm="46">
 <button mat-icon-button title="Remind me">
     <mat-icon>notifications</mat-icon>
   </button>
@@ -16,14 +16,14 @@
   <button mat-icon-button title="Add image">
     <mat-icon>panorama</mat-icon>
   </button>
-  <button mat-icon-button title="Archive">
+  <button mat-icon-button title="Archive" (click)="archiveNotes(noteid)">
     <mat-icon>archive</mat-icon>
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu" title="More">
     <mat-icon>more_vert</mat-icon>
   </button>
-  <mat-menu #menu="matMenu" [overlapTrigger]="false"
-  >
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="trashNotes(noteid)">Delete Note</button>
     <button mat-menu-item>Add label</button>
     <button mat-menu-item>Add drawing</button>
     <button mat-menu-item>Show checkboxes</button>

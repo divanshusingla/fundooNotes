@@ -34,9 +34,11 @@ getWithTokensapi(userObj,options)
 
 postWithTokensapi(userObj,options)
 {
-  return this.http.post(this.baseUrl1+userObj.url, this.getEncodedData(userObj.data), options);
+  return this.http.post(this.baseUrl1+userObj.url, userObj.data, options);
 
 }
+
+
 
   getEncodedData(data)
   {
