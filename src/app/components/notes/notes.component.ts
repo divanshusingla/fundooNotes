@@ -16,7 +16,7 @@ export class NotesComponent implements OnInit {
   title = new FormControl;
   description = new FormControl;
   note:Note = new Note();
-
+  archivevalue = "true";
   toggle()
   {
     this.show = !this.show;

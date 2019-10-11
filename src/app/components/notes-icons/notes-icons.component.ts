@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject, Input } from '@angular/core';
+import { Component, OnInit,Inject, Input, Output, EventEmitter } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
 import {DataService} from 'src/app/services/dataService/data.service';
 
@@ -9,6 +9,9 @@ import {DataService} from 'src/app/services/dataService/data.service';
 })
 export class NotesIconsComponent implements OnInit {
  @Input() noteid : any;
+ @Output() messageEvent= new EventEmitter<string>();
+ message : string = "to change color";
+
   result : any;
   response : any;
   colorArray: any = [
@@ -17,9 +20,35 @@ export class NotesIconsComponent implements OnInit {
     {color:'#D7AEFB'}, {color:'#FDCFE8'}, {color:'#E6C9A8'},{color: '#FFFFFF'}];
 
   constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService) { }
+@Input() archive : any;
 
   ngOnInit() {
   }
+
+  changeColor(noteid,color)
+  {
+    let colorData =
+    {
+      noteIdList : [noteid],
+      color : color
+    }
+
+    let options = {
+      data : colorData,
+      url : 'changesColorNotes'
+    }
+
+    this.result = this.svc.postwithToken(options)
+    this.result.subscribe((response) => {
+      this.response = response;
+      this.messageEvent.emit(this.message)
+      console.log("the result is ", this.response);
+    });
+  }
+
+
+
+
 
   archiveNotes(id)
   {
@@ -62,5 +91,29 @@ export class NotesIconsComponent implements OnInit {
     });
     this.dataSvc.changeMessage("message from dialog");
   }
+
+
+  unarchiveNotes(id)
+  {
+    let unarchive = 
+    {
+      isArchived : false,
+      noteIdList : [id]
+    }
+
+    let options=
+    {
+      data : unarchive,
+      url : 'archiveNotes'
+    }
+    this.result = this.svc.postwithToken(options)
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log("the result is ", this.response);
+    });
+    this.dataSvc.changeMessage("message from dialog");
+  }
+
+
 
 }

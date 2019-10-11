@@ -60,4 +60,52 @@ export class DialogNoteComponent implements OnInit {
     this.dataSvc.changeMessage("message from dialog");
   }
 
+  restoreNote(noteid)
+  {
+    let restore = 
+    {
+      isDeleted : false,
+      noteIdList : [noteid]
+    }
+
+    let options=
+    {
+      data : restore,
+      url : 'trashNotes'
+    }
+    this.result = this.svc.postwithToken(options)
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log("the result is ", this.response);
+    });
+    this.dataSvc.changeMessage("message from dialog");
+    this.dialogRef.close();
+  }
+
+
+
+
+  deleteForever(noteid)
+  {
+    let delFor = 
+    {
+      isDeleted : true,
+      noteIdList : [noteid]
+    }
+
+    let options=
+    {
+      data : delFor,
+      url : 'deleteForeverNotes'
+    }
+    this.result = this.svc.postwithToken(options)
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log("the result is ", this.response);
+    });
+    this.dataSvc.changeMessage("message from dialog");
+    this.dialogRef.close();
+  }
+  
+
 }

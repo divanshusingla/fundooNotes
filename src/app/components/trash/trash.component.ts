@@ -14,6 +14,8 @@ export class TrashComponent implements OnInit {
   notes : Note;
   options : any;
   message : String;
+  result : any;
+  response :any;
     constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
     ngOnInit() {
       this.getNoteData();
@@ -44,7 +46,7 @@ export class TrashComponent implements OnInit {
   {
     var result = data.filter(function(note)
     {
-      return (note.isDeleted == true && note.isArchived == false);
+      return (note.isDeleted == true);
     })
     return result;
   }
@@ -58,7 +60,8 @@ export class TrashComponent implements OnInit {
         data : {
           title : note.title ,
           description : note.description,
-          id : note.id
+          id : note.id,
+          recycle : true
         }
       });
     dialogref.afterClosed().subscribe(result=> {
@@ -66,4 +69,50 @@ export class TrashComponent implements OnInit {
     })
   }
 
+
+  restoreNote(noteid)
+  {
+    let restore = 
+    {
+      isDeleted : false,
+      noteIdList : [noteid]
+    }
+
+    let options=
+    {
+      data : restore,
+      url : 'trashNotes'
+    }
+    this.result = this.svc.postwithToken(options)
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log("the result is ", this.response);
+    });
+    this.dataSvc.changeMessage("message from dialog");
+  }
+
+
+
+
+  deleteForever(noteid)
+  {
+    let delFor = 
+    {
+      isDeleted : true,
+      noteIdList : [noteid]
+    }
+
+    let options=
+    {
+      data : delFor,
+      url : 'deleteForeverNotes'
+    }
+    this.result = this.svc.postwithToken(options)
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log("the result is ", this.response);
+    });
+    this.dataSvc.changeMessage("message from dialog");
+  }
+  
 }

@@ -14,6 +14,7 @@ export class DisplayNotesComponent implements OnInit {
 notes : Note;
 options : any;
 message : String;
+archivevalue = 'true';
 
   constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
 
@@ -25,6 +26,8 @@ message : String;
       this.getNoteData();
     })
   }
+
+
 
 getNoteData()
 {
@@ -52,6 +55,11 @@ filterData(data)
   return result;
 }
 
+receiveMessage($event)
+{
+this.message = $event;
+this.getNoteData();
+}
 
 openDialog(note)
 {
@@ -61,7 +69,8 @@ openDialog(note)
       data : {
         title : note.title ,
         description : note.description,
-        id : note.id
+        id : note.id,
+        recycle : false
       }
     });
   dialogref.afterClosed().subscribe(result=> {

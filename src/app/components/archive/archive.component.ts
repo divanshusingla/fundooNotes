@@ -13,7 +13,8 @@ import { DialogNoteComponent } from '../dialog-note/dialog-note.component';
 export class ArchiveComponent implements OnInit {
   notes : Note;
   options : any;
-  message : String;
+  message : string;
+  archivevalue = "false";
   
     constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
   
@@ -52,6 +53,12 @@ export class ArchiveComponent implements OnInit {
     return result;
   }
   
+  receiveMessage($event)
+{
+this.message = $event;
+this.getNoteData();
+}
+
   
   openDialog(note)
   {
@@ -61,7 +68,8 @@ export class ArchiveComponent implements OnInit {
         data : {
           title : note.title ,
           description : note.description,
-          id : note.id
+          id : note.id,
+          recycle : false
         }
       });
     dialogref.afterClosed().subscribe(result=> {
