@@ -29,13 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
       email: this.email.value,
       service: "basic"
     }
-
-    let obj={
-      data: this.userObj,
-      url: 'reset'
-    }
-
-    this.result = this.svc.PostwithoutToken(obj);
+    this.result = this.svc.forgotPassword(this.userObj);
       this.result.subscribe((response) => {
         this.response = response;
         console.log(this.response);

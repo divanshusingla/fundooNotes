@@ -16,6 +16,9 @@ export class TrashComponent implements OnInit {
   message : String;
   result : any;
   response :any;
+  trashNotes : any;
+  component = "trash";
+
     constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
     ngOnInit() {
       this.getNoteData();
@@ -27,15 +30,12 @@ export class TrashComponent implements OnInit {
   
   getNoteData()
   {
-  this.options =
+
+    this.svc.getNotesData().subscribe((response : any) =>
     {
-      url : 'getNotesList',
-    }
-    this.svc.getWithTokens(this.options).subscribe((response : any) =>
-    {
-      // console.log('response form the getnote data',response);
       this.notes = response.data.data.reverse();
       this.notes = this.filterData(this.notes);
+      this.trashNotes = this.notes;
     },(error)=>{
       console.log(error);
     });
@@ -50,7 +50,6 @@ export class TrashComponent implements OnInit {
     })
     return result;
   }
-  
   
   openDialog(note)
   {
@@ -69,7 +68,6 @@ export class TrashComponent implements OnInit {
     })
   }
 
-
   restoreNote(noteid)
   {
     let restore = 
@@ -77,22 +75,13 @@ export class TrashComponent implements OnInit {
       isDeleted : false,
       noteIdList : [noteid]
     }
-
-    let options=
-    {
-      data : restore,
-      url : 'trashNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.trashNotes(restore)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);
     });
     this.dataSvc.changeMessage("message from dialog");
   }
-
-
-
 
   deleteForever(noteid)
   {
@@ -101,13 +90,7 @@ export class TrashComponent implements OnInit {
       isDeleted : true,
       noteIdList : [noteid]
     }
-
-    let options=
-    {
-      data : delFor,
-      url : 'deleteForeverNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.deleteForever(delFor)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);

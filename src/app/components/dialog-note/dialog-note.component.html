@@ -1,4 +1,4 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px" *ngIf="data.recycle==false">
+<div class="container" fxLayout="column" fxLayoutGap="10px">
 
       <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="25"class="text"  placeholder="Title" [formControl]="title" value="{{data.title}}"></textarea>
@@ -7,7 +7,7 @@
         cdkAutosizeMaxRows="25" class="text" placeholder="Take a Note" [formControl]="description" value="{{data.description}}"></textarea>
    
         <div class="footer" fxLayoutAlign="space-between center">
-        <app-notes-icons [noteid]=data.id></app-notes-icons>
+          <app-toolbar [noteid]="note.id" ></app-toolbar>
       <button mat-button (click)=" updateNote()">Close</button>
     </div>
     </div>

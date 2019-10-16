@@ -14,8 +14,9 @@ export class ArchiveComponent implements OnInit {
   notes : Note;
   options : any;
   message : string;
-  archivevalue = "false";
-  
+  archiveData :  any;
+  component = "archive";
+
     constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
   
    
@@ -29,20 +30,14 @@ export class ArchiveComponent implements OnInit {
   
   getNoteData()
   {
-  this.options =
+    this.svc.archivedNotesList().subscribe((response : any) =>
     {
-      url : 'getNotesList',
-    }
-    this.svc.getWithTokens(this.options).subscribe((response : any) =>
-    {
-      // console.log('response form the getnote data',response);
       this.notes = response.data.data.reverse();
-      this.notes = this.filterData(this.notes);
+      this.archiveData = this.filterData(this.notes);
     },(error)=>{
       console.log(error);
     });
   }
-  
   
   filterData(data)
   {
@@ -53,7 +48,7 @@ export class ArchiveComponent implements OnInit {
     return result;
   }
   
-  receiveMessage($event)
+receiveMessage($event)
 {
 this.message = $event;
 this.getNoteData();

@@ -1,35 +1,65 @@
-  import { Injectable, Inject } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
-  import{AppServiceService}  from '../httpService/app-service.service'
-  import { HttpHeaders } from '@angular/common/http';
+import { Injectable, Inject } from '@angular/core';
+import { AppServiceService } from '../httpService/app-service.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteServiceService {
-  constructor(@Inject(HttpClient) private http : HttpClient, @Inject(AppServiceService) private svc : AppServiceService ) { }
+  constructor(@Inject(AppServiceService) private svc: AppServiceService) { }
 
-
-  postwithToken(userObj)
-  {
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':localStorage.getItem('id')
-      })
-    }
-    return this.svc.postWithTokensapi(userObj,httpOptions);
+  receiveNotesData(data) {
+    let url = 'notes/addNotes';
+    let auth = true;
+    return this.svc.post(data, url, auth);
   }
 
-  getWithTokens(userObj)
-  {
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('id')
-      })
-    }
-    return this.svc.getWithTokensapi(userObj,httpOptions);
+  getNotesData() {
+    let url = 'notes/getNotesList';
+    let auth = true;
+    return this.svc.get(url, auth);
   }
+
+  archiveNotes(data) {
+    let url = 'notes/archiveNotes';
+    let auth = true;
+    return this.svc.post(data, url, auth);
+  }
+
+  trashNotes(data) {
+    let url = 'notes/trashNotes';
+    let auth = true;
+    return this.svc.post(data, url, auth);
+  }
+
+  deleteForever(data) {
+    let url = 'notes/deleteForeverNotes';
+    let auth = true;
+    return this.svc.post(data, url, auth);
+  }
+
+  editNote(data) {
+    let url = 'notes/updateNotes';
+    let auth = true;
+    return this.svc.post(data, url, auth);
+  }
+
+  changeColor(data) {
+    let url = 'notes/changesColorNotes';
+    let auth = true;
+    return this.svc.post(data, url, auth);
+  }
+
+
+archivedNotesList(){
+  let url= 'notes/getArchiveNotesList'
+  let auth = true;
+  return this.svc.get(url,auth);
+}
+
+trashNotesList(){
+  let url= 'notes/getTrashNotesList'
+  let auth = true;
+  return this.svc.get(url,auth);
+}
 
 }

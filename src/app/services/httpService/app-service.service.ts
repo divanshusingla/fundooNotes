@@ -1,21 +1,44 @@
 import { Injectable, Inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AppServiceService {
   baseUrl= environment.base;
-  baseUrl1=environment.base1;
+  // baseUrl1=environment.base1;
 
-  constructor(@Inject(HttpClient)private http: HttpClient) {
-    
-   }
-   
-   post(userObj){
-    return this.http.post(this.baseUrl+userObj.url, userObj.data);
+  httpOptions={
+    headers:new HttpHeaders({
+      'Content-type':'application/json',
+      'Authorization':localStorage.getItem('id')
+    })
   }
 
+  constructor(@Inject(HttpClient)private http: HttpClient) { }
+   
+   post(userObj,url,auth){
+     if(auth == false)
+     {
+    return this.http.post(this.baseUrl+url, userObj);
+     }
+     else{
+       return this.http.post(this.baseUrl+url,userObj,this.httpOptions);
+     }
+  }
+
+  get(url,auth){
+    if(auth == false)
+    {
+   return this.http.get(this.baseUrl+url);
+    }
+    else{
+      return this.http.get(this.baseUrl+url ,this.httpOptions);
+    }
+ }
   
+
+
   postWithTokens(userObj,options)
   {
     return this.http.post(this.baseUrl+userObj.url, this.getEncodedData(userObj.data),options);
@@ -25,7 +48,7 @@ export class AppServiceService {
 
 getWithTokensapi(userObj,options)
 {
-  return this.http.get(this.baseUrl1+userObj.url,options);
+  return this.http.get(this.baseUrl+userObj.url,options);
 }
 
 
@@ -34,7 +57,7 @@ getWithTokensapi(userObj,options)
 
 postWithTokensapi(userObj,options)
 {
-  return this.http.post(this.baseUrl1+userObj.url, userObj.data, options);
+  return this.http.post(this.baseUrl+userObj.url, userObj.data, options);
 
 }
 

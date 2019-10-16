@@ -47,12 +47,7 @@ export class DialogNoteComponent implements OnInit {
       this.note.description = "both are empty";
     }
     this.dialogRef.close();
-    let obj =
-    {
-      data: this.note,
-      url: "updateNotes"
-    }
-    this.result = this.svc.postwithToken(obj)
+    this.result = this.svc.editNote(this.note)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);
@@ -68,12 +63,7 @@ export class DialogNoteComponent implements OnInit {
       noteIdList : [noteid]
     }
 
-    let options=
-    {
-      data : restore,
-      url : 'trashNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.trashNotes(restore)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);
@@ -92,13 +82,7 @@ export class DialogNoteComponent implements OnInit {
       isDeleted : true,
       noteIdList : [noteid]
     }
-
-    let options=
-    {
-      data : delFor,
-      url : 'deleteForeverNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.deleteForever(delFor)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);

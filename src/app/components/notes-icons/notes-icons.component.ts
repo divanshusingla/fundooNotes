@@ -33,12 +33,7 @@ export class NotesIconsComponent implements OnInit {
       color : color
     }
 
-    let options = {
-      data : colorData,
-      url : 'changesColorNotes'
-    }
-
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.changeColor(colorData)
     this.result.subscribe((response) => {
       this.response = response;
       this.messageEvent.emit(this.message)
@@ -57,19 +52,16 @@ export class NotesIconsComponent implements OnInit {
       isArchived : true,
       noteIdList : [id]
     }
-
-    let options=
-    {
-      data : archive,
-      url : 'archiveNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.archiveNotes(archive)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);
     });
     this.dataSvc.changeMessage("message from dialog");
   }
+
+
+
 
   trashNotes(id)
   {
@@ -78,20 +70,13 @@ export class NotesIconsComponent implements OnInit {
       isDeleted : true,
       noteIdList : [id]
     }
-
-    let options=
-    {
-      data : trash,
-      url : 'trashNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.trashNotes(trash)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);
     });
     this.dataSvc.changeMessage("message from dialog");
   }
-
 
   unarchiveNotes(id)
   {
@@ -100,20 +85,11 @@ export class NotesIconsComponent implements OnInit {
       isArchived : false,
       noteIdList : [id]
     }
-
-    let options=
-    {
-      data : unarchive,
-      url : 'archiveNotes'
-    }
-    this.result = this.svc.postwithToken(options)
+    this.result = this.svc.archiveNotes(unarchive)
     this.result.subscribe((response) => {
       this.response = response;
       console.log("the result is ", this.response);
     });
     this.dataSvc.changeMessage("message from dialog");
   }
-
-
-
 }

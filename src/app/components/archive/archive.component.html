@@ -1,4 +1,5 @@
-<div fxLayoutGap="5px" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayout.sm="row wrap" class="container">
+<app-display-notes [display]="archiveData" [component]="component"></app-display-notes>
+<!-- <div fxLayoutGap="5px" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayout.sm="row wrap" class="container">
     <mat-card fxFlex="25"  class="dcard" *ngFor="let note of notes" [ngStyle]="{background : note.color}"  fxFlex.xs="100" fxFlex.sm="46">
       <div  (click)="openDialog(note)">
           <p style=" word-break: break-all" >{{note.title}}</p>
@@ -8,6 +9,7 @@
       </div>
       <div fxLayoutAlign="space-around center">
         <app-notes-icons (messageEvent)="receiveMessage($event)"  [noteid]="note.id" [archive]="archivevalue"></app-notes-icons>
+        <app-toolbar (messageEvent)="receiveMessage($event)" [noteid]="note.id"></app-toolbar>
       </div>
     </mat-card>
-  </div>
+  </div> -->

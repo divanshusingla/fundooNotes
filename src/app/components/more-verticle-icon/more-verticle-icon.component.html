@@ -1,0 +1,21 @@
+<div *ngIf="mat=='archive' || mat=='mainnotes'" fxLayoutAlign="space-start center">
+<button mat-icon-button [matMenuTriggerFor]="menu" title="More">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="trashNotes(noteid)">Delete Note</button>
+  <button mat-menu-item>Add label</button>
+  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item>Show checkboxes</button>
+</mat-menu>
+</div>
+
+<div *ngIf="mat=='trash'" fxLayoutAlign="space-start center">
+    <button mat-icon-button [matMenuTriggerFor]="menu" title="More">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item (click)="deleteForever(noteid)">Delete Forever</button>
+      <button mat-menu-item (click)="restoreNote(noteid)">Restore</button>
+    </mat-menu>
+  </div>

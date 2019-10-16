@@ -32,19 +32,13 @@ export class NotesComponent implements OnInit {
     {
       this.toggle();
     }
-
     else{
       this.note = {
         title : this.title.value,
         description : this.description.value,
         service: "basic"
       }
-      let obj={
-        data: this.note,
-        url: 'addNotes'
-      }
-  
-      this.result=this.svc.postwithToken(obj)
+      this.result=this.svc.receiveNotesData(this.note)
       this.result.subscribe((response) => {
         this.response = response;
         console.log(this.response);
@@ -52,6 +46,5 @@ export class NotesComponent implements OnInit {
       });
       this.toggle();
     }
-  
   }
 }

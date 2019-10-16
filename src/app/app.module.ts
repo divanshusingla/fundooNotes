@@ -23,6 +23,14 @@ import { NoteMainComponent } from './components/note-main/note-main.component';
 import { DialogNoteComponent } from './components/dialog-note/dialog-note.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { ArchiveIconComponent } from './components/archive-icon/archive-icon.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ColorPlateIconComponent } from './components/color-plate-icon/color-plate-icon.component';
+import { MoreVerticleIconComponent } from './components/more-verticle-icon/more-verticle-icon.component';
+import { ReminderIconComponent } from './components/reminder-icon/reminder-icon.component';
+import { PersonAddIconComponent } from './components/person-add-icon/person-add-icon.component';
+import { PanormaIconComponent } from './components/panorma-icon/panorma-icon.component';
+import { UnarchiveIconComponent } from './components/unarchive-icon/unarchive-icon.component';
     
 
 @NgModule({
@@ -40,7 +48,15 @@ import { TrashComponent } from './components/trash/trash.component';
     NoteMainComponent,
     DialogNoteComponent,
     ArchiveComponent,
-    TrashComponent
+    TrashComponent,
+    ArchiveIconComponent,
+    ToolbarComponent,
+    ColorPlateIconComponent,
+    MoreVerticleIconComponent,
+    ReminderIconComponent,
+    PersonAddIconComponent,
+    PanormaIconComponent,
+    UnarchiveIconComponent
   ],
   entryComponents : [DialogNoteComponent],
   imports: [

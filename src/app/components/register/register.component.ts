@@ -66,12 +66,7 @@ export class RegisterComponent implements OnInit {
       service: "advance"
     }
 
-    let obj={
-      data: this.userObj,
-      url: 'userSignUp'
-    }
-
-    this.result = this.svc.PostwithoutToken(obj);
+    this.result = this.svc.register(this.userObj);
     this.result.subscribe((response) => {
       this.response = response;
       console.log(this.response);
