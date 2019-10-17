@@ -6,21 +6,42 @@
     <img src="../../../assets/images/dashboardIcon.png" class="image">
     <p class="toolbarHeading">MyNotes</p>
 
-    <mat-card class="searchbar" fxHide.xs="true" fxShow="true">
-        <mat-icon matPrefix>search</mat-icon>
-        <textarea matInput type="text" cdkTextareaAutosize placeholder="Search" class="searchtype" ></textarea>
-    </mat-card>
+    <!-- <mat-card class="searchbar" fxHide.xs="true" fxShow="true">
+        <button><mat-icon matPrefix>search</mat-icon></button>
+        <textarea matInput type="text" cdkTextareaAutosize [(ngModel)]="searchText" [formControl]="search" placeholder="Search" class="searchtype" ></textarea>
+    </mat-card> -->
+
+    <mat-form-field class="searchbar" appearance="outline" fxHide.xs="true" fxShow="true">
+      <button mat-icon-button matPrefix >
+        <mat-icon>search</mat-icon>
+      </button>
+      <input matInput id="search" class="search-spacer" (click)=search() routerLink="/search" [(ngModel)]="searchText" placeholder="Search">
+    </mat-form-field>
+
 
     <button mat-button class="toolbarButton">
       <mat-icon>apps</mat-icon>
     </button>
     <button mat-button [matMenuTriggerFor]="Userdetails" class="toolbarButton">
         <mat-icon>face</mat-icon>
-        <mat-menu #Userdetails [overlapTrigger]="false">
-          <div fxLayout="row">
-            <div><button mat-menu-item >Add account</button></div>
-          <div><button mat-menu-item (click)="logout()" routerLink="/login">Sign out</button></div>
-        </div></mat-menu>
+        
+<mat-menu #Userdetails [overlapTrigger]="false">
+  <div>
+    <div fxLayout="row">
+        <div><button>Change image</button></div>
+      <div>
+    <p>{{name}}</p>
+    <p>{{email}}</p>
+  </div>
+  
+  </div>
+     <mat-divider></mat-divider>
+  <div fxLayout="row">
+    <div><button mat-menu-item routerLink="login">Add account</button></div>
+    <div><button mat-menu-item (click)="logout()" routerLink="/login">Sign out</button></div>
+  </div>
+</div>
+</mat-menu>
       </button>
     
   </mat-toolbar>

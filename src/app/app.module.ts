@@ -31,6 +31,8 @@ import { ReminderIconComponent } from './components/reminder-icon/reminder-icon.
 import { PersonAddIconComponent } from './components/person-add-icon/person-add-icon.component';
 import { PanormaIconComponent } from './components/panorma-icon/panorma-icon.component';
 import { UnarchiveIconComponent } from './components/unarchive-icon/unarchive-icon.component';
+import { SearchPipe } from './search.pipe';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
     
 
 @NgModule({
@@ -56,7 +58,9 @@ import { UnarchiveIconComponent } from './components/unarchive-icon/unarchive-ic
     ReminderIconComponent,
     PersonAddIconComponent,
     PanormaIconComponent,
-    UnarchiveIconComponent
+    UnarchiveIconComponent,
+    SearchPipe,
+    SearchbarComponent
   ],
   entryComponents : [DialogNoteComponent],
   imports: [
