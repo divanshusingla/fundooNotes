@@ -62,4 +62,26 @@ trashNotesList(){
   return this.svc.get(url,auth);
 }
 
+getNoteLabelList()
+{
+  let url= 'noteLabels/getNoteLabelList'
+  return this.svc.getNoteList(url);
+}
+
+addLabel(data)
+{
+  let url= 'noteLabels'
+  let auth = true;
+  return this.svc.post(data,url,auth);
+}
+
+
+deleteLabel(data)
+{
+  let id = data.id;
+  console.log("data is is ",id)
+  let url= 'noteLabels/' + id + '/deleteNoteLabel'
+  return this.svc.deleteCall(url);
+}
+
 }

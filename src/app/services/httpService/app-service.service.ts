@@ -13,7 +13,16 @@ export class AppServiceService {
       'Content-type':'application/json',
       'Authorization':localStorage.getItem('id')
     })
+  } 
+
+  httpOptionsGetNoteList={
+    headers:new HttpHeaders({
+      'Content-type':'application/json',
+      'Authorization':localStorage.getItem('id')
+    })
   }
+
+
 
   constructor(@Inject(HttpClient)private http: HttpClient) { }
    
@@ -36,6 +45,18 @@ export class AppServiceService {
       return this.http.get(this.baseUrl+url ,this.httpOptions);
     }
  }
+
+
+
+
+ deleteCall(url)
+ {
+   return this.http.delete(this.baseUrl+url,this.httpOptions)
+ }
+
+ getNoteList(url){
+    return this.http.get(this.baseUrl+url ,this.httpOptionsGetNoteList);
+}
   
 
 

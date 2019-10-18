@@ -13,7 +13,7 @@
     <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
       cdkAutosizeMaxRows="25" placeholder="Take a Note" class="area2" [formControl]="description"></textarea>
       <div style="display: flex" fxLayoutAlign="space-between center" >
-      <app-notes-icons [archive]="archivevalue"></app-notes-icons>
+          <app-toolbar [function]="component"></app-toolbar>
     <button mat-button (click)="receiveData()" >Close</button>
       </div>
   </mat-card>

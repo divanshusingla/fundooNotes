@@ -47,7 +47,7 @@ export class SearchbarComponent implements OnInit {
   {
     var result = data.filter(function(note)
     {
-      return (note.isArchived == false && note.isDeleted == false );
+      return (note.isArchived == false || note.isDeleted == false );
     })
     return result;
   }

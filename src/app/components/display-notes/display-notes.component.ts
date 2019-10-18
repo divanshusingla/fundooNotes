@@ -41,12 +41,13 @@ openDialog(note)
         title : note.title ,
         description : note.description,
         id : note.id,
+        component : this.component,
       }
     });
   dialogref.afterClosed().subscribe(result=> {
     console.log("dialog result ", result);
   })
-  console.log('asdasdasdasd',this.display); 
+  // console.log('asdasdasdasd',this.display); 
 }
 
 }

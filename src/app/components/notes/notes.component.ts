@@ -10,13 +10,13 @@ import { DataService } from 'src/app/services/dataService/data.service';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
+  component = "mainnotes";
   show: boolean = true;
   response: any;
   result: any;
   title = new FormControl;
   description = new FormControl;
   note:Note = new Note();
-  archivevalue = "true";
   toggle()
   {
     this.show = !this.show;

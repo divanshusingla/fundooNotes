@@ -33,6 +33,7 @@ import { PanormaIconComponent } from './components/panorma-icon/panorma-icon.com
 import { UnarchiveIconComponent } from './components/unarchive-icon/unarchive-icon.component';
 import { SearchPipe } from './search.pipe';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
     
 
 @NgModule({
@@ -60,9 +61,10 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     PanormaIconComponent,
     UnarchiveIconComponent,
     SearchPipe,
-    SearchbarComponent
+    SearchbarComponent,
+    EditDialogComponent
   ],
-  entryComponents : [DialogNoteComponent],
+  entryComponents : [DialogNoteComponent,EditDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
