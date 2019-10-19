@@ -11,9 +11,10 @@ import { SearchPipe } from 'src/app/search.pipe';
   styleUrls: ['./searchbar.component.scss']
 })
 export class SearchbarComponent implements OnInit {
-  searchText : any;
+  searchText = null;
   filteredRecords : any;
   notes : Note;
+  searchNote : any;
   allNotes : any;
   filterPipe : SearchPipe = new SearchPipe();
   component = "search";
@@ -31,16 +32,19 @@ export class SearchbarComponent implements OnInit {
   {  
     this.dataSvc.currentMessage.subscribe((searchText) => {
     this.searchText = searchText
-  });
      this.svc.getNotesData().subscribe((response : any) =>
     {    
       this.notes = response.data.data.reverse();
       this.notes = this.filterData(this.notes);
       this.allNotes = this.notes;
       this.filteredRecords=this.filterPipe.transform(this.allNotes,this.searchText);
+      this.searchNote = this.filteredRecords;
+      // console.log("sdsadasdasd",this.searchNote);
+      
     },(error)=>{
       console.log(error);
     });
+  });
   }
     
   filterData(data)

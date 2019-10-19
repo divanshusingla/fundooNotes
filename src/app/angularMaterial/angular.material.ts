@@ -5,7 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
-import { MatMenuModule } from '@angular/material';
+import { MatMenuModule, MatTabsModule, MatChipsModule } from '@angular/material';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule,MatDialogModule } from  '@angular/material';
 
 @NgModule({
@@ -21,8 +21,9 @@ MatToolbarModule,
  MatIconModule, 
 MatSidenavModule,
  MatListModule,
- MatDialogModule
-
+ MatDialogModule,
+ MatTabsModule,
+ MatChipsModule
 ],
 
 exports: [
@@ -37,7 +38,9 @@ exports: [
      MatIconModule, 
     MatSidenavModule,
      MatListModule,
-     MatDialogModule
+     MatDialogModule,
+     MatTabsModule,
+     MatChipsModule 
 ],
 })
 export class AppMaterialModule { }

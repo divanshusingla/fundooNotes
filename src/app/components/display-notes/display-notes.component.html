@@ -1,16 +1,17 @@
 <div fxLayoutGap="5px" fxLayout="row wrap" fxLayout.xs="row wrap" fxLayout.sm="row wrap" class="container">
-  <mat-card fxFlex="30"  class="dcard" *ngFor="let note of display" [ngStyle]="{background : note.color}" fxFlex.xs="100" fxFlex.sm="46">
-    <div  (click)="openDialog(note)">
-        <p style=" word-break: break-all" >{{note.title}}</p>
+  <mat-card fxFlex="30" class="dcard" *ngFor="let note of display" [ngStyle]="{background : note.color}" fxFlex.xs="100"
+    fxFlex.sm="46">
+    <div (click)="openDialog(note)">
+      <p style=" word-break: break-all">{{note.title}}</p>
     </div>
     <div (click)="openDialog(note)">
-        <p style=" word-break: break-all">{{note.description}}</p>
+      <p style=" word-break: break-all">{{note.description}}</p>
+    </div>
+    <div *ngFor="let noteLabel of note.noteLabels" >
+      <mat-chip class="chipLabel">{{noteLabel.label}}</mat-chip>
     </div>
     <div fxLayoutAlign="space-between center">
       <app-toolbar (messageEvent)="receiveMessage($event)" [noteid]="note.id" [function]="component"></app-toolbar>
     </div>
   </mat-card>
-</div>  
-
-
-
+</div>

@@ -22,8 +22,6 @@ export class AppServiceService {
     })
   }
 
-
-
   constructor(@Inject(HttpClient)private http: HttpClient) { }
    
    post(userObj,url,auth){
@@ -46,18 +44,55 @@ export class AppServiceService {
     }
  }
 
-
-
-
  deleteCall(url)
  {
    return this.http.delete(this.baseUrl+url,this.httpOptions)
  }
-
  getNoteList(url){
     return this.http.get(this.baseUrl+url ,this.httpOptionsGetNoteList);
 }
   
+
+postImage(Obj,url){
+  let httpOptions1={
+    headers:new HttpHeaders({
+    'Authorization':localStorage.getItem('id')
+    })
+    }
+
+  return this.http.post(this.baseUrl + url, Obj, httpOptions1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   postWithTokens(userObj,options)

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
 import { DataService } from 'src/app/services/dataService/data.service';
 
@@ -9,12 +9,17 @@ import { DataService } from 'src/app/services/dataService/data.service';
 })
 export class MoreVerticleIconComponent implements OnInit {
   @Input() noteid: any;
-  @Input() mat : any;
+  @Input() mat: any;
+  @Output() messageEvent = new EventEmitter<string>();
   result: any;
+  labels: any;
+  message: any;
   response: any;
+  labelObj: any;
   constructor(@Inject(NoteServiceService) private svc: NoteServiceService, @Inject(DataService) private dataSvc: DataService) { }
 
   ngOnInit() {
+    this.getLabelList();
   }
 
   trashNotes(id) {
@@ -31,12 +36,11 @@ export class MoreVerticleIconComponent implements OnInit {
     this.dataSvc.changeMessage("Note is deleted");
   }
 
-  restoreNote(noteid)
-  {
-    let restore = 
+  restoreNote(noteid) {
+    let restore =
     {
-      isDeleted : false,
-      noteIdList : [noteid]
+      isDeleted: false,
+      noteIdList: [noteid]
     }
     this.result = this.svc.trashNotes(restore)
     this.result.subscribe((response) => {
@@ -46,12 +50,11 @@ export class MoreVerticleIconComponent implements OnInit {
     this.dataSvc.changeMessage("message from dialog");
   }
 
-  deleteForever(noteid)
-  {
-    let delFor = 
+  deleteForever(noteid) {
+    let delFor =
     {
-      isDeleted : true,
-      noteIdList : [noteid]
+      isDeleted: true,
+      noteIdList: [noteid]
     }
     this.result = this.svc.deleteForever(delFor)
     this.result.subscribe((response) => {
@@ -59,6 +62,31 @@ export class MoreVerticleIconComponent implements OnInit {
       console.log("the result is ", this.response);
     });
     this.dataSvc.changeMessage("message from dialog");
+  }
+
+
+
+  addLabels(id,nId) {
+    console.log("note", this.noteid)
+    this.labelObj = {
+      labelId: id,
+      noteId: nId,
+    }
+    this.svc.addLabelToNotes(this.labelObj).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.message);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  getLabelList() {
+    this.result = this.svc.getNoteLabelList()
+    this.result.subscribe((response) => {
+      this.response = response;
+      this.labels = this.response.data.details.reverse();
+      console.log("the result is in get list", this.response);
+    });
   }
 
 }

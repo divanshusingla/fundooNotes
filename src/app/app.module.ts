@@ -34,7 +34,9 @@ import { UnarchiveIconComponent } from './components/unarchive-icon/unarchive-ic
 import { SearchPipe } from './search.pipe';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
-    
+import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+   
 
 @NgModule({
   declarations: [
@@ -62,9 +64,10 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     UnarchiveIconComponent,
     SearchPipe,
     SearchbarComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    ImageDialogComponent
   ],
-  entryComponents : [DialogNoteComponent,EditDialogComponent],
+  entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -74,7 +77,8 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ImageCropperModule
 
   ],
   providers: [AppServiceService,AuthGuardGuard],

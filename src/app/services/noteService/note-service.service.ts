@@ -84,4 +84,19 @@ deleteLabel(data)
   return this.svc.deleteCall(url);
 }
 
+
+updateNoteLabel(data)
+{
+  let id = data.id;
+  console.log("data is is ",id)
+  let url= 'noteLabels/' + id + '/updateNoteLabel';
+  let auth = true;
+  return this.svc.post(data,url,auth);
+}
+
+addLabelToNotes(data){
+  let url= 'notes/'+data.noteId+'/addLabelToNotes/'+data.labelId+'/add';
+  let auth=true;
+  return this.svc.post(data,url,auth)
+}
 }

@@ -45,15 +45,21 @@ response : any;
     return this.svc.post(data,url,auth);
   }
 
-  postwithToken(userObj)
-{
-  let httpOptions={
-    headers:new HttpHeaders({
-      'Content-type':'application/x-www-form-urlencoded',
-      'Authorization':localStorage.getItem('token')
-    })
-  }
-  return this.svc.postWithTokens(userObj,httpOptions);
+//   postwithToken(userObj)
+// {
+//   let httpOptions={
+//     headers:new HttpHeaders({
+//       'Content-type':'application/x-www-form-urlencoded',
+//       'Authorization':localStorage.getItem('token')
+//     })
+//   }
+//   return this.svc.postWithTokens(userObj,httpOptions);
+// }
+
+profileimageuserservice(Obj){
+  let url= '/user/uploadProfileImage';
+  return this.svc.postImage(Obj,url);
 }
+
 
 }

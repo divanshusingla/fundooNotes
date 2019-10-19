@@ -15,22 +15,23 @@
     width :3%;
     height: 70%;
     padding-right: 2%; 
+    transform: scaleX(0.9) scaleY(0.9);
    }
 
   .toolbarHeading
   {
     font-size: 100%;
-    padding-right: 5%;
+    padding-right: 5%;  
+    transform: scaleY(0.9); 
   }
   .searchbar
   {
     width : 40%;
-    transform: scaleY(0.65); 
-    border-radius: 10px;
+    transform: scaleY(0.60); 
     font-size: 20px;
     height: 40%;
-    margin-right: 18%;
-    
+    margin-right: 20%;
+    margin-top: -3%;
     .searchtype 
     {
       width : 95%;
@@ -67,7 +68,9 @@
     }
     .sidebaricons
     {
-      padding-right: 10px;
+      padding-right: 25px;
+   transform: scaleX(0.9) scaleY(0.9);
+
     }
   }
 }
@@ -76,11 +79,30 @@
 }
 
 }
-
 }
 
-.searchbar{
-  margin-top: -3%;
-width: 100%;
-transform: translateZ(-1.1em) scale(.75);
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
 }
+
+.message {
+  position: absolute;
+  width: 90%;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  opacity: 1;
+}
+
+.accountmatcard{
+  height: 165px;
+  width: 250px;
+    }

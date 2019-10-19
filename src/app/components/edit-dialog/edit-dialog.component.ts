@@ -15,10 +15,13 @@ export class EditDialogComponent implements OnInit {
 result : any;
 response : any;
 labelName = new FormControl();
+updateLabel = new FormControl();
 labelDialog: any;
 labels :any;
-
+labelModel : any;
 constructor(@Inject(MAT_DIALOG_DATA) private data: any, @Inject(NoteServiceService) private svc: NoteServiceService, @Inject(MatDialogRef) private dialogRef: MatDialogRef<NoteMainComponent>, @Inject(DataService) private dataSvc: DataService) { }
+
+
 
   ngOnInit() {
     this.getLabelList();
@@ -52,6 +55,7 @@ constructor(@Inject(MAT_DIALOG_DATA) private data: any, @Inject(NoteServiceServi
     // this.dataSvc.changeMessage("message from dialog");
     // this.dialogRef.close();
     this.getLabelList();
+    this.labelModel = " ";
   }
 
 
@@ -73,5 +77,21 @@ constructor(@Inject(MAT_DIALOG_DATA) private data: any, @Inject(NoteServiceServi
   {
     this.dialogRef.close();
   }
+
+  updateNoteLabel(label)
+  {
+    let update = 
+    {
+      label : this.updateLabel.value,
+      id : label.id,
+    }
+    this.result = this.svc.updateNoteLabel(update)
+    this.result.subscribe((response) => {
+      this.response = response;
+      console.log('response',this.response);
+    });
+    this.getLabelList();
+    this.dialogRef.close();
+    }
 
 }
