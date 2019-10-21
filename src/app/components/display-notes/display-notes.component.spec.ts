@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DisplayNotesComponent } from './display-notes.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('DisplayNotesComponent', () => {
   let component: DisplayNotesComponent;
@@ -8,6 +9,7 @@ describe('DisplayNotesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ DisplayNotesComponent ]
     })
     .compileComponents();

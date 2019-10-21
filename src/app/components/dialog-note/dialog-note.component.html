@@ -1,5 +1,4 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px"
-  *ngIf="data.component == 'mainnotes' || data.component == 'archive'">
+<div class="container" fxLayout="column" fxLayoutGap="10px" *ngIf="data.component == 'mainnotes' || data.component == 'archive'">
 
   <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
     cdkAutosizeMaxRows="25" class="text" placeholder="Title" [formControl]="title" value="{{data.title}}"></textarea>
@@ -16,49 +15,7 @@
   <p>{{data.title}}</p>
   <p>{{data.description}}</p>
   <app-toolbar [noteid]="data.id" [function]=data.component></app-toolbar>
-
-  <!-- <button mat-icon-button [matMenuTriggerFor]="menu" title="More">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu" [overlapTrigger]="false">
-            <button mat-menu-item (click)="deleteForever(data.id)">Delete Forever</button>
-          <button mat-menu-item (click)="restoreNote(data.id)">Restore</button>
-        </mat-menu> -->
 </div>
 
-<!-- 
-<div class="container" fxLayout="column" fxLayoutGap="10px" *ngIf="data.component=='editLabels'">
-  <div fxLayout="row">
-    <div>
-      <mat-icon matPrefix matToolTip="Cancel">clear</mat-icon>
-    </div>
-    <div>
-        <textarea matInput type="text" placeholder="Create Label" [formControl]="labelName"></textarea>
-      <input matInput placeholder="create a new label" [formControl]="labelName">
-    </div>
-    <div fxLayoutAlign="end end"><button mat-button matToolTip="Create Label"  (click)="addLabel()">
-        <mat-icon matSuffix>
-          done
-        </mat-icon>
-      </button>
-    </div>
-  </div>
-  <div fxLayout="row" fxLayoutAlign="space-evenly center" *ngFor="let label of data"> 
-    <div fxFlex=30 >
-      <mat-icon matPrefix matToolTip="Delete label">delete</mat-icon>
-    </div>
-    <div fxFlex=40>
-      <p>{{label.label}}</p>
-      <p>{{label.label}}</p>
-    </div>
-    <div fxFlex=30 fxLayoutAlign="end end">
-      <mat-icon matSuffix>create</mat-icon>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-  <div fxLayout="row" fxLayoutAlign="end end">
-    <button mat-button mat-button >Done</button>
-  </div>
-</div> -->
 
 `

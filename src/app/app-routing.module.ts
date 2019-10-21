@@ -11,6 +11,8 @@ import { NoteMainComponent } from './components/note-main/note-main.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { LabelComponent } from './components/label/label.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 const routes: Route[] = [
   {path : '', redirectTo : '/login' , pathMatch : 'full'},
@@ -21,7 +23,9 @@ const routes: Route[] = [
   {path : '', component : DashboardComponent, canActivate: [AuthGuardGuard],
 children : [
   {path : 'note', component : NoteMainComponent},
+  {path : 'label/:label', component : LabelComponent},
   {path : 'archive', component : ArchiveComponent},
+  {path : 'reminder', component : ReminderComponent},
   {path : 'trash', component : TrashComponent},
   {path : 'search', component : SearchbarComponent}
 ] },

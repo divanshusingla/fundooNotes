@@ -1,20 +1,21 @@
 <div class="container" fxLayoutAlign="space-around center">
   <div class="titlecard1" (click)="toggle()" *ngIf="show" fxFlex="50" fxFlex.xs="90">
-    <mat-card style="border-radius: 15px">
+    <mat-card class="card1">
       <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="25" placeholder="Take a note" class="area1"></textarea>
     </mat-card>
   </div>
 
   <div class="titlecard2" *ngIf="!show" fxFlex="50" fxFlex.xs="90">
-    <mat-card fxLayout="column" fxLayoutGap="10px" style="border-radius: 15px">
+    <mat-card class="card2" fxLayout="column" fxLayoutGap="20px" >
       <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="25" placeholder="Title" class="area2" [formControl]="title"></textarea>
+        cdkAutosizeMaxRows="25" placeholder="Title" class="area2" [formControl]="title" [(ngModel)]="titleMo"></textarea>
       <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="25" placeholder="Take a Note" class="area2" [formControl]="description"></textarea>
+        cdkAutosizeMaxRows="25" placeholder="Take a Note" class="area2" [formControl]="description" [(ngModel)]="descriptionMo"></textarea>
       <div style="display: flex" fxLayoutAlign="space-between center">
-        <app-toolbar [function]="component"></app-toolbar>
+        <app-toolbar fxFlex="75" [function]="component"></app-toolbar>
         <button mat-button (click)="receiveData()">Close</button>
+       
       </div>
     </mat-card>
   </div>

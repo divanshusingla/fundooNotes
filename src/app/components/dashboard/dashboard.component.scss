@@ -9,6 +9,7 @@
   {
       width: 100%;
       height: 10%;
+      background-color: white;
 
   .image
   {
@@ -26,19 +27,21 @@
   }
   .searchbar
   {
-    width : 40%;
+    width : 55%;
     transform: scaleY(0.60); 
     font-size: 20px;
     height: 40%;
-    margin-right: 20%;
+    margin-right: 5%;
+    margin-left: 2%;
     margin-top: -3%;
     .searchtype 
     {
-      width : 95%;
+      width : 100%;
       height: 100%;
       outline: none;
       border : none;
       font-size: 18px;
+   
     }
     }
 .toolbarButton
@@ -59,7 +62,7 @@
   
   .sidebar
   {
-    width : 200px;
+    width : 250px;
    a:hover
     {
         background-color :$lightGrey;
@@ -69,7 +72,7 @@
     .sidebaricons
     {
       padding-right: 25px;
-   transform: scaleX(0.9) scaleY(0.9);
+   transform: scaleX(0.85) scaleY(0.85);
 
     }
   }
@@ -106,3 +109,10 @@
   height: 165px;
   width: 250px;
     }
+
+
+.labelHeadingToolbar
+{
+
+  transform: scaleX(0.9) scaleY(0.8)
+}

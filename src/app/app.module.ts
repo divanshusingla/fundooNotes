@@ -36,6 +36,8 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { LabelComponent } from './components/label/label.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
    
 
 @NgModule({
@@ -65,7 +67,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     SearchPipe,
     SearchbarComponent,
     EditDialogComponent,
-    ImageDialogComponent
+    ImageDialogComponent,
+    LabelComponent,
+    ReminderComponent
   ],
   entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent],
   imports: [

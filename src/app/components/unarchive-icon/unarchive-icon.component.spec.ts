@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UnarchiveIconComponent } from './unarchive-icon.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('UnarchiveIconComponent', () => {
   let component: UnarchiveIconComponent;
@@ -8,6 +9,7 @@ describe('UnarchiveIconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ UnarchiveIconComponent ]
     })
     .compileComponents();

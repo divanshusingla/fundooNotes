@@ -1,5 +1,5 @@
 
-<div *ngIf="function == 'mainnotes' || function == 'search'">
+<div class="toolbar" fxLayoutAlign="space-between center"  *ngIf="function == 'mainnotes' || function == 'search' || function == 'notesByLabel' ">
     <app-reminder-icon></app-reminder-icon>
     <app-person-add-icon></app-person-add-icon>
     <app-color-plate-icon [noteid]="noteid"></app-color-plate-icon>
@@ -8,7 +8,7 @@
     <app-more-verticle-icon [mat]=function [noteid]="noteid"></app-more-verticle-icon>
 </div>
 
-<div *ngIf="function == 'archive'">
+<div class="toolbar" fxLayoutAlign="space-between center"   *ngIf="function == 'archive'">
     <app-reminder-icon></app-reminder-icon>
     <app-person-add-icon></app-person-add-icon>
     <app-color-plate-icon [noteid]="noteid"></app-color-plate-icon>
@@ -16,6 +16,6 @@
     <app-unarchive-icon [noteid]="noteid"></app-unarchive-icon>
     <app-more-verticle-icon [mat]=function [noteid]="noteid"></app-more-verticle-icon>
 </div>
-<div *ngIf="function == 'trash'">
+<div class="toolbar" fxLayoutAlign="space-between center"   *ngIf="function == 'trash'">
     <app-more-verticle-icon [mat]=function [noteid]="noteid"></app-more-verticle-icon>
 </div>

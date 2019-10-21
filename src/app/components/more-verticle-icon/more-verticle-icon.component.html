@@ -1,5 +1,4 @@
-<button *ngIf="mat=='archive' || mat=='mainnotes'  || mat=='search' " 
-mat-icon-button [matMenuTriggerFor]="menu" title="More">
+<button *ngIf="mat=='archive' || mat=='mainnotes'  || mat=='search' || mat == 'notesByLabel'  " mat-icon-button [matMenuTriggerFor]="menu" title="More">
   <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu" [overlapTrigger]="false">

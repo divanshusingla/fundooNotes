@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  searchText: any;
+  searchText : any ;
   result: any;
   backurl : any;
   url : any;
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit {
   email = localStorage.getItem('email');
   name = localStorage.getItem('name');
   labels: any;
-  constructor(@Inject(DataService) public dataSvc: DataService, @Inject(NoteServiceService) private svc: NoteServiceService, @Inject(MatDialog) private dialog: MatDialog) { }
+  constructor(@Inject(Router)  private router: Router, @Inject(DataService) public dataSvc: DataService, @Inject(NoteServiceService) private svc: NoteServiceService, @Inject(MatDialog) private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getNotesLabels();
@@ -29,7 +30,7 @@ export class DashboardComponent implements OnInit {
     });
 
   }
-  
+
   getNotesLabels() {
     this.svc.getNoteLabelList().subscribe((response: any) => {
       this.labels = response.data.details.reverse();
@@ -44,11 +45,18 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  onKeyUp(event: any) {
-    this.searchText = event.target.value;
-    console.log(this.searchText);
-    this.dataSvc.changeMessage(this.searchText)
+  valuechange(newValue) {
+    if(newValue.length==0 || newValue==null ){
+      this.router.navigate(['/note']);
+    }
+    if(newValue.length>2){ 
+      this.router.navigate(['/search']);
+      this.dataSvc.changeMessage(newValue);
+    }   
   }
+
+
+
 
   onEdit() {
     // console.log("the daialog labels are",this.labels);
@@ -71,5 +79,10 @@ export class DashboardComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(ImageDialogComponent, {width: '1031px',height: '636px'});
+  }
+
+  goToLabelData(data)
+  {
+    this.dataSvc.changeMessage(data); 
   }
 }

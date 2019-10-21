@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReminderIconComponent } from './reminder-icon.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ReminderIconComponent', () => {
   let component: ReminderIconComponent;
@@ -8,6 +9,7 @@ describe('ReminderIconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ ReminderIconComponent ]
     })
     .compileComponents();

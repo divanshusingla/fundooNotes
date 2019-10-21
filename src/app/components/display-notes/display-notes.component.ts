@@ -50,4 +50,20 @@ openDialog(note)
   // console.log('asdasdasdasd',this.display); 
 }
 
+
+
+deletelabelfromnotes(label, noteid) {
+  let data = {
+    id: label,
+    noteId: noteid
+  }
+  //console.log("label value.......", data);
+  this.svc.deleteLabelFromNotes(data).subscribe((response: any) => {
+    this.dataSvc.changeMessage(response);
+    //console.log(response);
+  });
+
+}
+
+
 }

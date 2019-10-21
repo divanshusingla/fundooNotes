@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoreVerticleIconComponent } from './more-verticle-icon.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('MoreVerticleIconComponent', () => {
   let component: MoreVerticleIconComponent;
@@ -8,6 +10,10 @@ describe('MoreVerticleIconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatMenuModule
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ MoreVerticleIconComponent ]
     })
     .compileComponents();

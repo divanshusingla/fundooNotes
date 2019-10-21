@@ -31,9 +31,9 @@ export class MoreVerticleIconComponent implements OnInit {
     this.result = this.svc.trashNotes(trash)
     this.result.subscribe((response) => {
       this.response = response;
-      console.log("the result is ", this.response);
+      // console.log("the result is ", this.response);
     });
-    this.dataSvc.changeMessage("Note is deleted");
+    this.dataSvc.changeMessage("note is trashed");
   }
 
   restoreNote(noteid) {
@@ -45,9 +45,9 @@ export class MoreVerticleIconComponent implements OnInit {
     this.result = this.svc.trashNotes(restore)
     this.result.subscribe((response) => {
       this.response = response;
-      console.log("the result is ", this.response);
+      // console.log("the result is ", this.response);
     });
-    this.dataSvc.changeMessage("message from dialog");
+    this.dataSvc.changeMessage("note is restored");
   }
 
   deleteForever(noteid) {
@@ -59,9 +59,9 @@ export class MoreVerticleIconComponent implements OnInit {
     this.result = this.svc.deleteForever(delFor)
     this.result.subscribe((response) => {
       this.response = response;
-      console.log("the result is ", this.response);
+      // console.log("the result is ", this.response);
     });
-    this.dataSvc.changeMessage("message from dialog");
+    this.dataSvc.changeMessage("note is deleted forever ");
   }
 
 
@@ -72,12 +72,14 @@ export class MoreVerticleIconComponent implements OnInit {
       labelId: id,
       noteId: nId,
     }
-    this.svc.addLabelToNotes(this.labelObj).subscribe((response: any) => {
-      console.log(response);
+    this.svc.addLabelToNotes(this.labelObj).subscribe((response) => {
+      // console.log(response);
+      this.response = response;
       this.messageEvent.emit(this.message);
     }, (error) => {
-      console.log(error);
+      // console.log(error);
     });
+    this.dataSvc.changeMessage("add label function is executed");
   }
 
   getLabelList() {
@@ -85,7 +87,7 @@ export class MoreVerticleIconComponent implements OnInit {
     this.result.subscribe((response) => {
       this.response = response;
       this.labels = this.response.data.details.reverse();
-      console.log("the result is in get list", this.response);
+      // console.log("the result is in get list", this.response);
     });
   }
 

@@ -99,4 +99,19 @@ addLabelToNotes(data){
   let auth=true;
   return this.svc.post(data,url,auth)
 }
+
+
+
+getNotesByLabel(label)
+{
+  let url= 'notes/getNotesListByLabel/' + label.labelName
+  let auth = true;
+  return this.svc.post(label,url,auth);
+}
+
+deleteLabelFromNotes(Obj){
+  let url= 'notes/' + Obj.noteId + '/addLabelToNotes/' + Obj.id + '/remove'
+  let auth = true;
+  return this.svc.post(Obj,url,auth);
+}
 }

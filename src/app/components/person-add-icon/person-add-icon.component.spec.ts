@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PersonAddIconComponent } from './person-add-icon.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('PersonAddIconComponent', () => {
   let component: PersonAddIconComponent;
@@ -8,6 +9,7 @@ describe('PersonAddIconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ PersonAddIconComponent ]
     })
     .compileComponents();

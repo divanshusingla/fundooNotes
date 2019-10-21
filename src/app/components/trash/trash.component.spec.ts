@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TrashComponent } from './trash.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('TrashComponent', () => {
   let component: TrashComponent;
@@ -8,6 +9,7 @@ describe('TrashComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ TrashComponent ]
     })
     .compileComponents();

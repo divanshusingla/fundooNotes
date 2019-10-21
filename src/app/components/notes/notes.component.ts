@@ -14,6 +14,8 @@ export class NotesComponent implements OnInit {
   show: boolean = true;
   response: any;
   result: any;
+  titleMo : any;
+  descriptionMo : any;
   title = new FormControl;
   description = new FormControl;
   note:Note = new Note();
@@ -45,6 +47,8 @@ export class NotesComponent implements OnInit {
         this.datasvc.changeMessage("Hello from Sibling")      
       });
       this.toggle();
+      this.titleMo = "";
+      this.descriptionMo = "";
     }
   }
 }
