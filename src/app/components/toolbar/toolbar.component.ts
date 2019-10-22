@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,10 +9,19 @@ export class ToolbarComponent implements OnInit {
 
 @Input() noteid : any;
 @Input() function : any;
+@Output() messageEvent= new EventEmitter<string>();
+
+message : any;
   constructor() { }
 
   ngOnInit() {
   
   }
 
+
+ receiveMessage($event) {
+  this.message = $event;
+  this.messageEvent.emit(this.message);
+  console.log("asdasdasdasd",this.message);
+}
 }

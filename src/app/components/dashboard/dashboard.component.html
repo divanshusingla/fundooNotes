@@ -69,7 +69,7 @@
 
           <div *ngFor="let label of labels">
             <a mat-list-item routerLink="/label/{{label.label}}" (click)="goToLabelData(label.label)">
-              <mat-icon class="sidebaricons">create</mat-icon>{{label.label}}
+              <mat-icon class="sidebaricons">label</mat-icon>{{label.label}}
             </a>
           </div>
           <a mat-list-item routerLink="." (click)="onEdit()">

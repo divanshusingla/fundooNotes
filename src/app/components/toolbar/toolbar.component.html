@@ -2,7 +2,7 @@
 <div class="toolbar" fxLayoutAlign="space-between center"  *ngIf="function == 'mainnotes' || function == 'search' || function == 'notesByLabel' ">
     <app-reminder-icon></app-reminder-icon>
     <app-person-add-icon></app-person-add-icon>
-    <app-color-plate-icon [noteid]="noteid"></app-color-plate-icon>
+    <app-color-plate-icon (messageEvent)="receiveMessage($event)"  [noteid]="noteid"></app-color-plate-icon>
     <app-panorma-icon></app-panorma-icon>
     <app-archive-icon [noteid]="noteid"></app-archive-icon>
     <app-more-verticle-icon [mat]=function [noteid]="noteid"></app-more-verticle-icon>
@@ -11,7 +11,8 @@
 <div class="toolbar" fxLayoutAlign="space-between center"   *ngIf="function == 'archive'">
     <app-reminder-icon></app-reminder-icon>
     <app-person-add-icon></app-person-add-icon>
-    <app-color-plate-icon [noteid]="noteid"></app-color-plate-icon>
+    <app-color-plate-icon (messageEvent)="receiveMessage($event)"
+    [noteid]="noteid"></app-color-plate-icon>
     <app-panorma-icon></app-panorma-icon>
     <app-unarchive-icon [noteid]="noteid"></app-unarchive-icon>
     <app-more-verticle-icon [mat]=function [noteid]="noteid"></app-more-verticle-icon>

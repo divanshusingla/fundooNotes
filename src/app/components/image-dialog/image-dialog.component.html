@@ -1,10 +1,7 @@
 <div fxFlex="100" style="width: 100%;" style="height: 100%;" fxLayout="column">
-
     <div fxFlex="10" >
   <h3>Select profile photo</h3>
   </div>
-  
-  
   <div fxFlex="70" >
       <input style="display: none;" type='file' (change)="fileChangeEvent($event)" #fileEvent>
       <mat-tab-group>
@@ -17,9 +14,9 @@
         </mat-tab>
       </mat-tab-group>
   <image-cropper style="min-height: 45vh;"
-      [imageChangedEvent]="imageChangedEvent"
+    [imageChangedEvent]="imageChangedEvent"
        (imageCropped)="imageCropped($event)"
-  ></image-cropper>
+></image-cropper>
   </div>
   
   <div fxFlex="20" fxLayoutGap="10px" fxLayout="row">

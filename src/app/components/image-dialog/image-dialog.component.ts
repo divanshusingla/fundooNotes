@@ -39,7 +39,7 @@ export class ImageDialogComponent implements OnInit {
     
     this.svc.profileimageuserservice(fd).subscribe((response:any) => {
       localStorage.setItem('imageUrl', response.status.imageUrl);   
-      this.dataSvc.changeMessage("Hello from Sibling")
+      this.dataSvc.changeMessage("changing the image")
       console.log("Image Url while uploading ...",response.status.imageUrl);
     });
    

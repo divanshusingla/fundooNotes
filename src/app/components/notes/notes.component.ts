@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {Note} from '../../models/note.model';
-import {NoteServiceService} from './../../services/noteService/note-service.service';
+import { Note } from '../../models/note.model';
+import { NoteServiceService } from './../../services/noteService/note-service.service';
 import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
@@ -14,41 +14,48 @@ export class NotesComponent implements OnInit {
   show: boolean = true;
   response: any;
   result: any;
-  titleMo : any;
-  descriptionMo : any;
+  titleMo: any;
+  descriptionMo: any;
   title = new FormControl;
   description = new FormControl;
-  note:Note = new Note();
-  toggle()
-  {
+  note: Note = new Note();
+  @Output() messageEvent = new EventEmitter<string>();
+  message: any;
+  toggle() {
     this.show = !this.show;
-   
   }
-  
-  constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private datasvc : DataService ) { }
+
+  constructor(@Inject(NoteServiceService) private svc: NoteServiceService, @Inject(DataService) private datasvc: DataService) { }
   ngOnInit() {
   }
-  receiveData(){
+  receiveData() {
 
-    if(this.title.value == null && this.description.value == null)
-    {
+    if (this.title.value == null && this.description.value == null) {
       this.toggle();
     }
-    else{
+    else {
       this.note = {
-        title : this.title.value,
-        description : this.description.value,
-        service: "basic"
+        title: this.title.value,
+        description: this.description.value,
+        service: "basic",
+        color : this.message,
       }
-      this.result=this.svc.receiveNotesData(this.note)
+      this.result = this.svc.receiveNotesData(this.note)
       this.result.subscribe((response) => {
         this.response = response;
         console.log(this.response);
-        this.datasvc.changeMessage("Hello from Sibling")      
+        this.datasvc.changeMessage("Hello from Sibling")
       });
       this.toggle();
       this.titleMo = "";
       this.descriptionMo = "";
+      this.message = "";
     }
+  }
+
+  receiveMessage($event) {
+    this.message = $event;
+    // this.messageEvent.emit(this.message);
+    console.log("in notesdfdfdsfdsf", this.message);
   }
 }
