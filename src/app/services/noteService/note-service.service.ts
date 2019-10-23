@@ -114,4 +114,12 @@ deleteLabelFromNotes(Obj){
   let auth = true;
   return this.svc.post(Obj,url,auth);
 }
+
+addReminderToNOte(data)
+{
+  let url = 'notes/addUpdateReminderNotes';
+  let auth = true;
+  return this.svc.post(data,url,auth);
+}
+
 }

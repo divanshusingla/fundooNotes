@@ -41,6 +41,7 @@ openDialog(note)
         title : note.title ,
         description : note.description,
         id : note.id,
+        color : note.color,
         component : this.component,
       }
     });

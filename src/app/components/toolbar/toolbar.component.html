@@ -1,6 +1,6 @@
 
 <div class="toolbar" fxLayoutAlign="space-between center"  *ngIf="function == 'mainnotes' || function == 'search' || function == 'notesByLabel' ">
-    <app-reminder-icon></app-reminder-icon>
+    <app-reminder-icon [noteid]="noteid"></app-reminder-icon>
     <app-person-add-icon></app-person-add-icon>
     <app-color-plate-icon (messageEvent)="receiveMessage($event)"  [noteid]="noteid"></app-color-plate-icon>
     <app-panorma-icon></app-panorma-icon>
@@ -9,7 +9,7 @@
 </div>
 
 <div class="toolbar" fxLayoutAlign="space-between center"   *ngIf="function == 'archive'">
-    <app-reminder-icon></app-reminder-icon>
+    <app-reminder-icon [noteid]="noteid"></app-reminder-icon>
     <app-person-add-icon></app-person-add-icon>
     <app-color-plate-icon (messageEvent)="receiveMessage($event)"
     [noteid]="noteid"></app-color-plate-icon>

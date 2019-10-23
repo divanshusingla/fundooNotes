@@ -27,7 +27,8 @@ children : [
   {path : 'archive', component : ArchiveComponent},
   {path : 'reminder', component : ReminderComponent},
   {path : 'trash', component : TrashComponent},
-  {path : 'search', component : SearchbarComponent}
+  {path : 'search', component : SearchbarComponent},
+  {path : 'reminder', component : ReminderComponent}
 ] },
   {path : '**', component : PagenotfoundComponent }
 

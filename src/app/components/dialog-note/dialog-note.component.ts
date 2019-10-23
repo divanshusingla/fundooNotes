@@ -6,6 +6,7 @@ import { NoteServiceService } from '../../services/noteService/note-service.serv
 import { MatDialogRef } from '@angular/material/dialog';
 import { NoteMainComponent } from '../note-main/note-main.component';
 import { DataService } from 'src/app/services/dataService/data.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-dialog-note',
@@ -51,37 +52,6 @@ export class DialogNoteComponent implements OnInit {
       console.log("the result is ", this.response);
     });
     this.dataSvc.changeMessage("message from dialog");
-  }
-
-  restoreNote(noteid) {
-    let restore =
-    {
-      isDeleted: false,
-      noteIdList: [noteid]
-    }
-
-    this.result = this.svc.trashNotes(restore)
-    this.result.subscribe((response) => {
-      this.response = response;
-      console.log("the result is ", this.response);
-    });
-    this.dataSvc.changeMessage("message from dialog");
-    this.dialogRef.close();
-  }
-
-  deleteForever(noteid) {
-    let delFor =
-    {
-      isDeleted: true,
-      noteIdList: [noteid]
-    }
-    this.result = this.svc.deleteForever(delFor)
-    this.result.subscribe((response) => {
-      this.response = response;
-      console.log("the result is ", this.response);
-    });
-    this.dataSvc.changeMessage("message from dialog");
-    this.dialogRef.close();
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px" *ngIf="data.component == 'mainnotes' || data.component == 'archive'">
+<div class="container" fxLayout="column" [ngStyle]="{background : data.color}" fxLayoutGap="10px" *ngIf="data.component == 'mainnotes' || data.component == 'archive'">
 
   <textarea matInput type="text" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
     cdkAutosizeMaxRows="25" class="text" placeholder="Title" [formControl]="title" value="{{data.title}}"></textarea>
@@ -12,8 +12,8 @@
   </div>
 </div>
 <div class="container" fxLayout="column" fxLayoutGap="10px" *ngIf="data.component== 'trash'">
-  <p>{{data.title}}</p>
-  <p>{{data.description}}</p>
+  <p style="word-break: break-all;min-width : 40%">{{data.title}}</p>
+  <p style="word-break: break-all">{{data.description}}</p>
   <app-toolbar [noteid]="data.id" [function]=data.component></app-toolbar>
 </div>
 
