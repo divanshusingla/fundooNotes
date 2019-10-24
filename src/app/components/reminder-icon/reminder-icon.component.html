@@ -7,7 +7,7 @@
     <button mat-menu-item>Next Week {{time}}</button>
     <button mat-menu-item>Work</button>
     <button mat-menu-item [matMenuTriggerFor]="pickDateTime">
-      <mat-icon>time</mat-icon>Pick date & time
+      <mat-icon>access_time</mat-icon>Pick date & time
     </button>
   </mat-menu>
   <mat-menu #pickDateTime  (click) = "$event.stopPropagation()" overlapTrigger="true">

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
+import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
   selector: 'app-reminder-icon',
@@ -19,7 +20,7 @@ export class ReminderIconComponent implements OnInit {
   reminderDate = new FormControl();
   reminderTime = new FormControl();
 
-  constructor(@Inject(NoteServiceService) private svc: NoteServiceService) { }
+  constructor(@Inject(NoteServiceService) private svc: NoteServiceService,@Inject(DataService) private dataSvc : DataService) { }
 
   ngOnInit() {
     this.currentTime();
@@ -41,11 +42,6 @@ currentTime()
   this.time = hours + ampm;
 }
 
-setTime(time)
-{
-
-}
-
 
 setReminder()
 {
@@ -61,6 +57,7 @@ setReminder()
     this.response = response;
     console.log('response',this.response); 
   });
+this.dataSvc.changeMessage("reminder is added");
 }
 
 

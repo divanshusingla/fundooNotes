@@ -63,8 +63,19 @@ deletelabelfromnotes(label, noteid) {
     this.dataSvc.changeMessage(response);
     //console.log(response);
   });
-
 }
 
+deleteReminderFromNotes(noteid,reminder)
+{
+  let data = 
+  {
+    noteIdList : [noteid],
+    reminder : reminder
+  }
+  this.svc.deleteReminderFromNotes(data).subscribe((response: any) => {
+    this.dataSvc.changeMessage(response);
+    //console.log(response);
+  });
+}
 
 }

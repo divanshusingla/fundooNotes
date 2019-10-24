@@ -42,8 +42,23 @@ response : any;
   {
     let url = 'user/reset-password';
     let auth = true;
-    return this.svc.post(data,url,auth);
+    return this.svc.postReset(this.getEncodedData(data),url);
   }
+
+  getEncodedData(data)
+  {
+    const formBody=[];
+    for(const property in data )
+    {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(data[property]);
+      formBody.push(encodedKey + '=' + encodedValue);
+    }
+    return formBody.join('&');
+  }
+
+
+
 
 //   postwithToken(userObj)
 // {
@@ -59,6 +74,15 @@ response : any;
 profileimageuserservice(Obj){
   let url= '/user/uploadProfileImage';
   return this.svc.postImage(Obj,url);
+}
+
+
+getUsersListCollaborator(data)
+{
+  let url = 'user/searchUserList';
+  let auth = true ;
+  console.log("user service col");
+  return this.svc.post(data,url,auth);
 }
 
 

@@ -122,4 +122,18 @@ addReminderToNOte(data)
   return this.svc.post(data,url,auth);
 }
 
+
+deleteReminderFromNotes(data)
+{
+  let url = 'notes/removeReminderNotes';
+  let auth = true ;
+  return this.svc.post(data,url,auth);
+}
+
+addCollaborator(data)
+{
+  let url = 'notes/' + data.noteId + '/AddcollaboratorsNotes';
+  let auth = true;
+  return this.svc.post(data,url,auth);
+}
 }

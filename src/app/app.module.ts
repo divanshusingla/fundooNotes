@@ -38,6 +38,7 @@ import { ImageDialogComponent } from './components/image-dialog/image-dialog.com
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { LabelComponent } from './components/label/label.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
    
 
 @NgModule({
@@ -69,9 +70,10 @@ import { ReminderComponent } from './components/reminder/reminder.component';
     EditDialogComponent,
     ImageDialogComponent,
     LabelComponent,
-    ReminderComponent
+    ReminderComponent,
+    CollaboratorComponent
   ],
-  entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent],
+  entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent,CollaboratorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
