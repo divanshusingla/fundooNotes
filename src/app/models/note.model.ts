@@ -4,4 +4,5 @@ export class Note
    description : String;
    service : "basic";
    color : any;
+   reminder : any;
 }

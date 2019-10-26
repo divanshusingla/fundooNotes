@@ -73,4 +73,10 @@ export class AppServiceService {
     return this.http.post(this.baseUrl + url, data, httpOptionsReset);
   }
 
+
+  patch(data,url)
+  {
+    return this.http.patch(this.baseUrl + url, data, this.httpOptions);
+  }
+
 }

@@ -20,7 +20,9 @@ export class NotesComponent implements OnInit {
   description = new FormControl;
   note: Note = new Note();
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() reminderEvent = new EventEmitter<string>();
   message: any;
+  reminderMessage : any;
   toggle() {
     this.show = !this.show;
   }
@@ -39,6 +41,7 @@ export class NotesComponent implements OnInit {
         description: this.description.value,
         service: "basic",
         color : this.message,
+        reminder : this.reminderMessage,
       }
       this.result = this.svc.receiveNotesData(this.note)
       this.result.subscribe((response) => {
@@ -50,6 +53,7 @@ export class NotesComponent implements OnInit {
       this.titleMo = "";
       this.descriptionMo = "";
       this.message = "";
+      this.reminderMessage= "";
     }
   }
 
@@ -58,4 +62,13 @@ export class NotesComponent implements OnInit {
     // this.messageEvent.emit(this.message);
     console.log("in notesdfdfdsfdsf", this.message);
   }
+
+  receiveReminderMessage($event) {
+    this.reminderMessage = $event;
+    // this.messageEvent.emit(this.message);
+    console.log("in notesdfdfdsfdsf",$event);
+  }
+
+
+
 }

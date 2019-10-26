@@ -17,10 +17,18 @@ notes : Note;
 options : any;
 message : String;
 archivevalue = 'true';
-
+view : any;
   constructor(@Inject(NoteServiceService) private svc : NoteServiceService,@Inject(DataService) private dataSvc : DataService,@Inject(MatDialog) private dialog : MatDialog) { }
 
   ngOnInit() {
+    this.dataSvc.currentView.subscribe((res) => {
+      if(res == 'default view')
+      {
+        this.view = "grid";
+      }
+      else{
+     this.view = res;}
+    });
     this.display;
  
   }

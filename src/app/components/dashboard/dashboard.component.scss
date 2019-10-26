@@ -67,12 +67,15 @@
     {
         background-color :$lightGrey;
         color : $black;
-        border-radius:0px 40px 40px 0px;
+        border-radius:0px 25px 25px 0px;
     }
     .sidebaricons
     {
-      padding-right: 25px;
-   transform: scaleX(0.85) scaleY(0.85);
+
+   transform: scaleX(0.95) scaleY(0.95);
+   padding: 5%;
+   padding-right: 32px;
+   padding-left: 21px;
 
     }
   }
@@ -115,4 +118,15 @@
 {
 
   transform: scaleX(0.9) scaleY(0.8)
+}
+
+.cd { 
+  background-color: #feefc3;
+  opacity: 1 !important;
+  border-radius: 0px 25px 25px 0px; 
+outline: none;}
+
+.sidebaricons{
+  padding-left: 15px;
+ 
 }

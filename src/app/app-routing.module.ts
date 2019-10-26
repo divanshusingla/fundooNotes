@@ -13,6 +13,7 @@ import { TrashComponent } from './components/trash/trash.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { LabelComponent } from './components/label/label.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
+import { QuestionsComponent } from './components/questions/questions.component';
 
 const routes: Route[] = [
   {path : '', redirectTo : '/login' , pathMatch : 'full'},
@@ -28,7 +29,9 @@ children : [
   {path : 'reminder', component : ReminderComponent},
   {path : 'trash', component : TrashComponent},
   {path : 'search', component : SearchbarComponent},
-  {path : 'reminder', component : ReminderComponent}
+  {path : 'reminder', component : ReminderComponent},
+  {path : 'question/:id', component : QuestionsComponent}
+
 ] },
   {path : '**', component : PagenotfoundComponent }
 

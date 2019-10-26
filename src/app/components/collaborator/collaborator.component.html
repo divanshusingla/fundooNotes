@@ -1,10 +1,23 @@
 <h4>Collaborators</h4>
 <mat-divider></mat-divider>
+<br>
 <mat-card-header>
   <img mat-card-avatar [src]="url? url : 'https://www.w3schools.com/howto/img_avatar.png'">
   <mat-card-title>{{userName}}</mat-card-title>
   <mat-card-subtitle>{{userEmail}}</mat-card-subtitle>
 </mat-card-header>
+<mat-divider></mat-divider>
+<div *ngFor="let user of collaboratorsList" style="display: flex" fxLayoutAlign="space-between center">
+  <div>
+<p>{{user.firstName}}</p>
+<p>{{user.email}}</p>
+</div>
+<button mat-button (click)="deleteCollaborators(user.userId,data.noteId)">
+  <mat-icon matPrefix matToolTip="Delete label">delete</mat-icon>
+</button>
+<mat-divider></mat-divider>
+</div>
+<br>
 <div fxLayout="column" fxLayoutGap="10px">
   <div>
     <input matInput [(ngModel)]="collaboratorSearch" (ngModelChange)="getUsersList($event)" placeholder="Search"
@@ -12,8 +25,10 @@
     <mat-autocomplete #autoGroup="matAutocomplete">
       <mat-option *ngFor="let user of usersData" [value]="user.email">
         {{user.email}}
-      </mat-option>
+        </mat-option>
+   
     </mat-autocomplete>
+   
   </div>
   <div>
     <button mat-button (click)="addCollaborator()">

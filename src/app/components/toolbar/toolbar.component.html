@@ -1,6 +1,6 @@
 
 <div class="toolbar" fxLayoutAlign="space-between center"  *ngIf="function == 'mainnotes' || function == 'search' || function == 'notesByLabel' ">
-    <app-reminder-icon [noteid]="noteid"></app-reminder-icon>
+    <app-reminder-icon (reminderEvent)="receiveReminderMessage($event)" [noteid]="noteid"></app-reminder-icon>
     <app-person-add-icon [noteid]="noteid"></app-person-add-icon>
     <app-color-plate-icon (messageEvent)="receiveMessage($event)"  [noteid]="noteid"></app-color-plate-icon>
     <app-panorma-icon></app-panorma-icon>
@@ -9,10 +9,9 @@
 </div>
 
 <div class="toolbar" fxLayoutAlign="space-between center"   *ngIf="function == 'archive'">
-    <app-reminder-icon [noteid]="noteid"></app-reminder-icon>
-    <app-person-add-icon [noteid]="note.id"></app-person-add-icon>
-    <app-color-plate-icon (messageEvent)="receiveMessage($event)"
-    [noteid]="noteid"></app-color-plate-icon>
+    <app-reminder-icon (reminderEvent)="receiveReminderMessage($event)" [noteid]="noteid"></app-reminder-icon>
+    <app-person-add-icon [noteid]="noteid"></app-person-add-icon>
+    <app-color-plate-icon (messageEvent)="receiveMessage($event)" [noteid]="noteid"></app-color-plate-icon>
     <app-panorma-icon></app-panorma-icon>
     <app-unarchive-icon [noteid]="noteid"></app-unarchive-icon>
     <app-more-verticle-icon [mat]=function [noteid]="noteid"></app-more-verticle-icon>

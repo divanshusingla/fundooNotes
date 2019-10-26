@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
 import { DataService } from 'src/app/services/dataService/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-more-verticle-icon',
@@ -16,7 +17,7 @@ export class MoreVerticleIconComponent implements OnInit {
   message: any;
   response: any;
   labelObj: any;
-  constructor(@Inject(NoteServiceService) private svc: NoteServiceService, @Inject(DataService) private dataSvc: DataService) { }
+  constructor(@Inject(Router)private router : Router,@Inject(NoteServiceService) private svc: NoteServiceService, @Inject(DataService) private dataSvc: DataService) { }
 
   ngOnInit() {
     this.getLabelList();
@@ -91,5 +92,15 @@ export class MoreVerticleIconComponent implements OnInit {
     });
   }
 
+  questionsAnswers(id)
+  {
+    this.router.navigate(['/question/' + id]);
+    this.result = this.svc.getNoteData(id);
+    this.result.subscribe((response) => {
+      this.response = response.data.data;
+      console.log("the result is ", this.response);
+    });
+    this.dataSvc.changeQuestion(this.response);
+  }
 
 }

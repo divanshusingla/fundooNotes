@@ -10,6 +10,8 @@ export class ToolbarComponent implements OnInit {
 @Input() noteid : any;
 @Input() function : any;
 @Output() messageEvent= new EventEmitter<string>();
+@Output() reminderEvent= new EventEmitter<string>();
+
 
 message : any;
   constructor() { }
@@ -22,6 +24,12 @@ message : any;
  receiveMessage($event) {
   this.message = $event;
   this.messageEvent.emit(this.message);
-  console.log("asdasdasdasd",this.message);
+  console.log("color emitter",this.message);
 }
+
+receiveReminderMessage($event) {
+  this.reminderEvent.emit($event);
+  console.log("reminder emitter",$event);
+}
+
 }

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  show = false;
   searchText : any ;
   result: any;
   backurl : any;
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
   email = localStorage.getItem('email');
   name = localStorage.getItem('name');
   labels: any;
+
   constructor(@Inject(Router)  private router: Router, @Inject(DataService) public dataSvc: DataService, @Inject(NoteServiceService) private svc: NoteServiceService, @Inject(MatDialog) private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -27,9 +29,23 @@ export class DashboardComponent implements OnInit {
     this.dataSvc.currentMessage.subscribe((res) => {
       this.getNotesLabels();
       this.changeimage();
+      
     });
 
   }
+
+  toggle()
+  {
+      this.show = !this.show;
+      if(this.show)
+      {
+        this.dataSvc.changeView("list");
+      }
+      else{
+        this.dataSvc.changeView("grid")
+      }
+  }
+
 
   getNotesLabels() {
     this.svc.getNoteLabelList().subscribe((response: any) => {
@@ -54,9 +70,6 @@ export class DashboardComponent implements OnInit {
       this.dataSvc.changeMessage(newValue);
     }   
   }
-
-
-
 
   onEdit() {
     // console.log("the daialog labels are",this.labels);

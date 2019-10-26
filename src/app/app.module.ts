@@ -39,6 +39,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { LabelComponent } from './components/label/label.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { QuestionsComponent } from './components/questions/questions.component';
    
 
 @NgModule({
@@ -71,10 +73,12 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     ImageDialogComponent,
     LabelComponent,
     ReminderComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    QuestionsComponent
   ],
   entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent,CollaboratorComponent],
   imports: [
+    OwlDateTimeModule, OwlNativeDateTimeModule,
     BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
@@ -87,7 +91,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     ImageCropperModule
 
   ],
-  providers: [AppServiceService,AuthGuardGuard],
+  providers: [AppServiceService,AuthGuardGuard,OwlDateTimeModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

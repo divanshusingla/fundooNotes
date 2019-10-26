@@ -136,4 +136,26 @@ addCollaborator(data)
   let auth = true;
   return this.svc.post(data,url,auth);
 }
+
+getCollaborators(data)
+{
+  let url = 'notes/' + data.noteId;
+  let auth = true;
+  return this.svc.patch(data,url);
+}
+
+
+deleteCollaborators(data)
+{
+  let url = 'notes/' + data.noteId + '/removeCollaboratorsNotes/' + data.userId;
+  return this.svc.deleteCall(url);
+}
+
+getNoteData(data)
+{
+  let url = 'notes/getNotesDetail/' + data;
+  let auth = true;
+  return this.svc.get(url,auth);
+}
+
 }
