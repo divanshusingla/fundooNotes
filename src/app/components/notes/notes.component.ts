@@ -25,6 +25,10 @@ export class NotesComponent implements OnInit {
   reminderMessage : any;
   toggle() {
     this.show = !this.show;
+    this.titleMo = "";
+    this.descriptionMo = "";
+    this.message = "";
+    this.reminderMessage= "";
   }
 
   constructor(@Inject(NoteServiceService) private svc: NoteServiceService, @Inject(DataService) private datasvc: DataService) { }
@@ -46,27 +50,27 @@ export class NotesComponent implements OnInit {
       this.result = this.svc.receiveNotesData(this.note)
       this.result.subscribe((response) => {
         this.response = response;
-        console.log(this.response);
+        // console.log(this.response);
         this.datasvc.changeMessage("Hello from Sibling")
       });
       this.toggle();
-      this.titleMo = "";
-      this.descriptionMo = "";
-      this.message = "";
-      this.reminderMessage= "";
+      // this.titleMo = "";
+      // this.descriptionMo = "";
+      // this.message = "";
+      // this.reminderMessage= "";
     }
   }
 
   receiveMessage($event) {
     this.message = $event;
     // this.messageEvent.emit(this.message);
-    console.log("in notesdfdfdsfdsf", this.message);
+    // console.log("in notesdfdfdsfdsf", this.message);
   }
 
   receiveReminderMessage($event) {
     this.reminderMessage = $event;
     // this.messageEvent.emit(this.message);
-    console.log("in notesdfdfdsfdsf",$event);
+    // console.log("in notesdfdfdsfdsf",$event);
   }
 
 

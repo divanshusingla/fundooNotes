@@ -22,7 +22,7 @@ export class DataService {
     this.viewSource.next(message)
   }
 
-  changeQuestion(message : any = [])
+  changeQuestion(message : any)
   {
     this.questionAnswers.next(message);
   }

@@ -98,9 +98,10 @@ export class MoreVerticleIconComponent implements OnInit {
     this.result = this.svc.getNoteData(id);
     this.result.subscribe((response) => {
       this.response = response.data.data;
-      console.log("the result is ", this.response);
+      this.dataSvc.changeQuestion(this.response);
+      console.log("the result is from questions and answer ", this.response);
     });
-    this.dataSvc.changeQuestion(this.response);
+    
   }
 
 }

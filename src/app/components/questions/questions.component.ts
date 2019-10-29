@@ -12,12 +12,17 @@ export class QuestionsComponent implements OnInit {
   result : any;
   response : any;
   noteData : any;
-  constructor(@Inject(NoteServiceService) private svc: NoteServiceService,@Inject(DataService) public dataSvc: DataService) { }
+  constructor(@Inject(NoteServiceService) private svc: NoteServiceService,@Inject(DataService) public dataSvc: DataService) {
+
+   }
 
   ngOnInit() {
     this.dataSvc.currentquestion.subscribe((res) => {
       this.noteData = res;
+      console.log("in the question and answer",this.noteData);
     });
+  
+    
     
   }
 
