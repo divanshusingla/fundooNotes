@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { AppServiceService } from '../httpService/app-service.service'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,68 +8,68 @@ import { AppServiceService } from '../httpService/app-service.service'
 export class NoteServiceService {
   constructor(@Inject(AppServiceService) private svc: AppServiceService) { }
 
-  receiveNotesData(data) {
+  receiveNotesData(data):Observable<any> {
     let url = 'notes/addNotes';
     let auth = true;
     return this.svc.post(data, url, auth);
   }
 
-  getNotesData() {
+  getNotesData() :Observable<any> {
     let url = 'notes/getNotesList';
     let auth = true;
     return this.svc.get(url, auth);
   }
 
-  archiveNotes(data) {
+  archiveNotes(data) :Observable<any> {
     let url = 'notes/archiveNotes';
     let auth = true;
     return this.svc.post(data, url, auth);
   }
 
-  trashNotes(data) {
+  trashNotes(data):Observable<any>  {
     let url = 'notes/trashNotes';
     let auth = true;
     return this.svc.post(data, url, auth);
   }
 
-  deleteForever(data) {
+  deleteForever(data) :Observable<any> {
     let url = 'notes/deleteForeverNotes';
     let auth = true;
     return this.svc.post(data, url, auth);
   }
 
-  editNote(data) {
+  editNote(data) :Observable<any>{
     let url = 'notes/updateNotes';
     let auth = true;
     return this.svc.post(data, url, auth);
   }
 
-  changeColor(data) {
+  changeColor(data) :Observable<any>{
     let url = 'notes/changesColorNotes';
     let auth = true;
     return this.svc.post(data, url, auth);
   }
 
 
-archivedNotesList(){
+archivedNotesList():Observable<any>{
   let url= 'notes/getArchiveNotesList'
   let auth = true;
   return this.svc.get(url,auth);
 }
 
-trashNotesList(){
+trashNotesList():Observable<any>{
   let url= 'notes/getTrashNotesList'
   let auth = true;
   return this.svc.get(url,auth);
 }
 
-getNoteLabelList()
+getNoteLabelList():Observable<any>
 {
   let url= 'noteLabels/getNoteLabelList'
   return this.svc.getNoteList(url);
 }
 
-addLabel(data)
+addLabel(data):Observable<any>
 {
   let url= 'noteLabels'
   let auth = true;
@@ -76,7 +77,7 @@ addLabel(data)
 }
 
 
-deleteLabel(data)
+deleteLabel(data):Observable<any>
 {
   let id = data.id;
   console.log("data is is ",id)
@@ -85,7 +86,7 @@ deleteLabel(data)
 }
 
 
-updateNoteLabel(data)
+updateNoteLabel(data):Observable<any>
 {
   let id = data.id;
   console.log("data is is ",id)
@@ -94,7 +95,7 @@ updateNoteLabel(data)
   return this.svc.post(data,url,auth);
 }
 
-addLabelToNotes(data){
+addLabelToNotes(data):Observable<any>{
   let url= 'notes/'+data.noteId+'/addLabelToNotes/'+data.labelId+'/add';
   let auth=true;
   return this.svc.post(data,url,auth)
@@ -102,14 +103,14 @@ addLabelToNotes(data){
 
 
 
-getNotesByLabel(label)
+getNotesByLabel(label):Observable<any>
 {
   let url= 'notes/getNotesListByLabel/' + label.labelName
   let auth = true;
   return this.svc.post(label,url,auth);
 }
 
-deleteLabelFromNotes(Obj){
+deleteLabelFromNotes(Obj):Observable<any>{
   let url= 'notes/' + Obj.noteId + '/addLabelToNotes/' + Obj.id + '/remove'
   let auth = true;
   return this.svc.post(Obj,url,auth);
@@ -156,6 +157,13 @@ getNoteData(data)
   let url = 'notes/getNotesDetail/' + data;
   let auth = true;
   return this.svc.get(url,auth);
+}
+
+addQuestionToNote(data)
+{
+  let url = 'questionAndAnswerNotes/addQuestionAndAnswer';
+  let auth = true;
+  return this.svc.post(data,url,auth);
 }
 
 }

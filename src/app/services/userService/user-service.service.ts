@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import{AppServiceService}  from '../httpService/app-service.service'
 import { HttpHeaders } from '@angular/common/http';
 import { post } from 'selenium-webdriver/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,7 @@ response : any;
     return this.svc.postReset(this.getEncodedData(data),url);
   }
 
-  getEncodedData(data)
+  getEncodedData(data):string
   {
     const formBody=[];
     for(const property in data )
@@ -71,13 +72,13 @@ response : any;
 //   return this.svc.postWithTokens(userObj,httpOptions);
 // }
 
-profileimageuserservice(Obj){
+profileimageuserservice(Obj):Observable<any>{
   let url= '/user/uploadProfileImage';
   return this.svc.postImage(Obj,url);
 }
 
 
-getUsersListCollaborator(data)
+getUsersListCollaborator(data):Observable<any>
 {
   let url = 'user/searchUserList';
   let auth = true ;

@@ -7,35 +7,37 @@
   <mat-card-subtitle>{{userEmail}}</mat-card-subtitle>
 </mat-card-header>
 <mat-divider></mat-divider>
-<div *ngFor="let user of collaboratorsList" style="display: flex" fxLayoutAlign="space-between center">
-  <div>
+<div *ngFor="let user of collaboratorsList" style="display: flex" style="width: 100%" fxLayoutAlign="space-between center">
+  <div fxFlex="80">
 <p>{{user.firstName}}</p>
 <p>{{user.email}}</p>
 </div>
+<div>
 <button mat-button (click)="deleteCollaborators(user.userId,data.noteId)">
-  <mat-icon matPrefix matToolTip="Delete label">delete</mat-icon>
+  <mat-icon matPrefix matToolTip="Delete label">close</mat-icon>
 </button>
 <mat-divider></mat-divider>
 </div>
-<br>
-<div fxLayout="column" fxLayoutGap="10px">
-  <div>
+
+
+</div>
+<mat-divider></mat-divider>
+<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
+  <div fxFlex="80">
     <input matInput [(ngModel)]="collaboratorSearch" (ngModelChange)="getUsersList($event)" placeholder="Search"
       [matAutocomplete]="autoGroup">
     <mat-autocomplete #autoGroup="matAutocomplete">
       <mat-option *ngFor="let user of usersData" [value]="user.email">
         {{user.email}}
         </mat-option>
-   
     </mat-autocomplete>
-   
   </div>
   <div>
     <button mat-button (click)="addCollaborator()">
       <mat-icon>done</mat-icon>
     </button>
   </div>
-  <div fxLayoutAlign="space-between center">
+</div>
+<div>
     <button mat-button>save</button>
   </div>
-</div>

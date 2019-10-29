@@ -24,3 +24,11 @@
       transform: scaleX(1) scaleY(0.8);
       padding: 5px;
     }
+
+    .hide{
+      opacity: 0;
+    }
+  
+  .hide:hover {
+      opacity: 1;
+    }

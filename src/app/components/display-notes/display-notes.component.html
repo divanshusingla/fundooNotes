@@ -27,14 +27,11 @@
       </mat-chip-list>
     </div>
     <div *ngFor="let collaborator of note.collaborators">
-      <mat-chip-list>
-        <mat-chip class="chips">{{collaborator.email}}
-        </mat-chip>
-      </mat-chip-list>
+        <button mat-mini-fab color="accent" title="{{collaborator.email}}">{{collaborator.firstName[0] | uppercase}}</button>
     </div>
 
 
-    <div fxLayoutAlign="space-around center">
+    <div fxLayoutAlign="space-around center" class="hide">
       <app-toolbar (messageEvent)="receiveMessage($event)" [noteid]="note.id" [function]="component"></app-toolbar>
     </div>
   </mat-card>
@@ -72,14 +69,12 @@
         </mat-chip-list>
       </div>
       <div *ngFor="let collaborator of note.collaborators">
-        <mat-chip-list>
-          <mat-chip class="chips">{{collaborator.email}}
-          </mat-chip>
-        </mat-chip-list>
+          <button mat-mini-fab color="accent" title="{{collaborator.email}}">{{collaborator.firstName[0] | uppercase}}</button>
+    
       </div>
   
   
-      <div fxLayoutAlign="space-around center">
+      <div fxLayoutAlign="center center" class="hide">
         <app-toolbar (messageEvent)="receiveMessage($event)" [noteid]="note.id" [function]="component"></app-toolbar>
       </div>
     </mat-card>

@@ -91,17 +91,4 @@ export class MoreVerticleIconComponent implements OnInit {
       // console.log("the result is in get list", this.response);
     });
   }
-
-  questionsAnswers(id)
-  {
-    this.router.navigate(['/question/' + id]);
-    this.result = this.svc.getNoteData(id);
-    this.result.subscribe((response) => {
-      this.response = response.data.data;
-      this.dataSvc.changeQuestion(this.response);
-      console.log("the result is from questions and answer ", this.response);
-    });
-    
-  }
-
 }

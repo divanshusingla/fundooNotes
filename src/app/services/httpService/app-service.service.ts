@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AppServiceService {
@@ -26,7 +27,7 @@ export class AppServiceService {
 
   constructor(@Inject(HttpClient) private http: HttpClient) { }
 
-  post(userObj, url, auth) {
+  post(userObj, url, auth):Observable<any> {
     if (auth == false) {
       return this.http.post(this.baseUrl + url, userObj);
     }
@@ -35,7 +36,7 @@ export class AppServiceService {
     }
   }
 
-  get(url, auth) {
+  get(url, auth):Observable<any> {
     if (auth == false) {
       return this.http.get(this.baseUrl + url);
     }
@@ -44,15 +45,15 @@ export class AppServiceService {
     }
   }
 
-  deleteCall(url) {
+  deleteCall(url):Observable<any> {
     return this.http.delete(this.baseUrl + url, this.httpOptions)
   }
-  getNoteList(url) {
+  getNoteList(url):Observable<any> {
     return this.http.get(this.baseUrl + url, this.httpOptionsGetNoteList);
   }
 
 
-  postImage(Obj, url) {
+  postImage(Obj, url):Observable<any> {
     let httpOptions1 = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('id')
@@ -62,7 +63,7 @@ export class AppServiceService {
     return this.http.post(this.baseUrl + url, Obj, httpOptions1);
   }
 
-  postReset(data,url) {
+  postReset(data,url) :Observable<any>{
    let  httpOptionsReset =
     {
       headers: new HttpHeaders({
@@ -74,7 +75,7 @@ export class AppServiceService {
   }
 
 
-  patch(data,url)
+  patch(data,url):Observable<any>
   {
     return this.http.patch(this.baseUrl + url, data, this.httpOptions);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { NoteServiceService } from 'src/app/services/noteService/note-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -8,36 +9,44 @@ import { NoteServiceService } from 'src/app/services/noteService/note-service.se
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
-  noteId : any;
+  noteData : any;
+  idOfNote : any;
   result : any;
   response : any;
-  noteData : any;
-  constructor(@Inject(NoteServiceService) private svc: NoteServiceService,@Inject(DataService) public dataSvc: DataService) {
-
+  question : any;
+  constructor(@Inject(ActivatedRoute) private route: ActivatedRoute,@Inject(NoteServiceService) private svc: NoteServiceService,@Inject(DataService) public dataSvc: DataService) {
    }
 
   ngOnInit() {
-    this.dataSvc.currentquestion.subscribe((res) => {
-      this.noteData = res;
-      console.log("in the question and answer",this.noteData);
-    });
-  
-    
-    
+    this.idOfNote = this.route.snapshot.paramMap.get('id');
+    this.getNoteData(this.idOfNote);
   }
 
 
-  // getNoteData()
-  // {
-  //   this.result = this.svc.getNoteData(this.noteId)
-  //   this.result.subscribe((response) => {
-  //     this.response = response;
-  //     this.noteData = this.response.data.data;
-  //     console.log("the result is ", this.noteData);
-  //   });
-  // }
+  getNoteData(id)
+  {
+    console.log("sdfffffffffffffffffff",id);
+    this.result = this.svc.getNoteData(id)
+    this.result.subscribe((response) => {
+      this.response = response;
+      this.noteData = this.response.data.data;
+      console.log("the result is ", this.noteData);
+    });
+  }
 
-
-
-
+  askQuestion(id)
+  {
+    let questionData = 
+    {
+      message : this.question,
+      notesId : id,
+    }
+    this.result = this.svc.addQuestionToNote(questionData)
+    this.result.subscribe((response) => {
+      this.response = response;
+      // console.log('rewdfsadsad',this.response);
+      this.getNoteData(questionData.notesId);
+      this.question="";
+    });
+  }
 }

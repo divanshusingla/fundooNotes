@@ -62,7 +62,6 @@ export class CollaboratorComponent implements OnInit {
     this.svc.addCollaborator(userObj).subscribe((response: any) => {
      console.log('response', response);
      this.getCollaborators();
-     
     }, (error) => {
       console.log(error);
     });
@@ -78,6 +77,7 @@ export class CollaboratorComponent implements OnInit {
       console.log('response to get collabaasdfc', response); 
       this.collaboratorsList = response.collaborators;
       this.searchBarCollabb = " ";
+      this.collaboratorSearch = "";
       this.dataSvc.changeMessage("collaborators are added or removed")
      }, (error) => {
        console.log(error);

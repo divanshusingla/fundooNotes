@@ -41,6 +41,7 @@ import { ReminderComponent } from './components/reminder/reminder.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { QuestionsComponent } from './components/questions/questions.component';
+// import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
    
 
 @NgModule({
@@ -74,7 +75,9 @@ import { QuestionsComponent } from './components/questions/questions.component';
     LabelComponent,
     ReminderComponent,
     CollaboratorComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    // FroalaEditorModule, 
+    // FroalaViewModule
   ],
   entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent,CollaboratorComponent],
   imports: [

@@ -5,4 +5,15 @@
 <p>
    {{note.description}}
   </p>
+<mat-divider></mat-divider>
+<div *ngFor="let question of note.questionAndAnswerNotes">
+  <p>
+    {{question.message}}
+  </p>
+
+  <mat-divider></mat-divider>
+  </div>
+<p>Ask a Question</p>
+<input [(ngModel)]="question" placeholder="Type something">
+<button (click)=askQuestion(note.id)>Ask</button> 
 </div>
