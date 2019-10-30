@@ -8,7 +8,9 @@
 </mat-card-header>
 <mat-divider></mat-divider>
 <div *ngFor="let user of collaboratorsList" style="display: flex" style="width: 100%" fxLayoutAlign="space-between center">
-  <div fxFlex="80">
+    <img mat-card-avatar [src]="url? url : 'https://www.w3schools.com/howto/img_avatar.png'">
+  <div fxFlex="70">
+
 <p>{{user.firstName}}</p>
 <p>{{user.email}}</p>
 </div>

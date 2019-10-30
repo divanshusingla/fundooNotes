@@ -14,6 +14,9 @@ export class QuestionsComponent implements OnInit {
   result : any;
   response : any;
   question : any;
+  noteTitle : any;
+  noteDescription : any;
+  questionAndAnswersArrayLength : any;
   constructor(@Inject(ActivatedRoute) private route: ActivatedRoute,@Inject(NoteServiceService) private svc: NoteServiceService,@Inject(DataService) public dataSvc: DataService) {
    }
 
@@ -28,9 +31,12 @@ export class QuestionsComponent implements OnInit {
     console.log("sdfffffffffffffffffff",id);
     this.result = this.svc.getNoteData(id)
     this.result.subscribe((response) => {
-      this.response = response;
-      this.noteData = this.response.data.data;
-      console.log("the result is ", this.noteData);
+      this.response = response.data.data;
+      this.noteData = this.response[0];
+      console.log("the result is of notedata ", this.noteData);
+      this.noteTitle = this.noteData.title;
+      this.noteDescription = this.noteData.description;
+      this.questionAndAnswersArrayLength = this.noteData.questionAndAnswerNotes.length();
     });
   }
 

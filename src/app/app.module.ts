@@ -41,9 +41,7 @@ import { ReminderComponent } from './components/reminder/reminder.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { QuestionsComponent } from './components/questions/questions.component';
-// import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-   
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,8 +74,6 @@ import { QuestionsComponent } from './components/questions/questions.component';
     ReminderComponent,
     CollaboratorComponent,
     QuestionsComponent,
-    // FroalaEditorModule, 
-    // FroalaViewModule
   ],
   entryComponents : [DialogNoteComponent,EditDialogComponent,ImageDialogComponent,CollaboratorComponent],
   imports: [
@@ -91,8 +87,8 @@ import { QuestionsComponent } from './components/questions/questions.component';
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    ImageCropperModule
-
+    ImageCropperModule, 
+     FroalaEditorModule.forRoot(),FroalaViewModule.forRoot()  
   ],
   providers: [AppServiceService,AuthGuardGuard,OwlDateTimeModule],
   bootstrap: [AppComponent]
